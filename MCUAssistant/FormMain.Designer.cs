@@ -31,6 +31,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.textBoxRes = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.labelABC = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBoxus = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
@@ -47,13 +52,14 @@
             this.labelClkTime = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.labelMacTime = new System.Windows.Forms.Label();
-            this.textBoxus = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.labelABC = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBoxRes = new System.Windows.Forms.TextBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            this.tabPage4.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -72,11 +78,11 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Location = new System.Drawing.Point(65, 182);
+            this.tabControl1.Location = new System.Drawing.Point(17, 179);
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1004, 485);
+            this.tabControl1.Size = new System.Drawing.Size(1178, 485);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
@@ -89,10 +95,53 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 34);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(996, 447);
+            this.tabPage1.Size = new System.Drawing.Size(1170, 447);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "延时计算";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // textBoxRes
+            // 
+            this.textBoxRes.Location = new System.Drawing.Point(24, 34);
+            this.textBoxRes.Multiline = true;
+            this.textBoxRes.Name = "textBoxRes";
+            this.textBoxRes.Size = new System.Drawing.Size(539, 382);
+            this.textBoxRes.TabIndex = 4;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(680, 52);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(106, 24);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "延时时间";
+            // 
+            // labelABC
+            // 
+            this.labelABC.AutoSize = true;
+            this.labelABC.Location = new System.Drawing.Point(968, 146);
+            this.labelABC.Name = "labelABC";
+            this.labelABC.Size = new System.Drawing.Size(0, 24);
+            this.labelABC.TabIndex = 2;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(801, 139);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(161, 39);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "计算";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // textBoxus
+            // 
+            this.textBoxus.Location = new System.Drawing.Point(805, 47);
+            this.textBoxus.Name = "textBoxus";
+            this.textBoxus.Size = new System.Drawing.Size(245, 35);
+            this.textBoxus.TabIndex = 0;
+            this.textBoxus.Text = "1000";
             // 
             // tabPage2
             // 
@@ -106,15 +155,19 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.webBrowser1);
+            this.tabPage3.Controls.Add(this.listBox1);
             this.tabPage3.Location = new System.Drawing.Point(4, 34);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(996, 447);
+            this.tabPage3.Size = new System.Drawing.Size(1106, 447);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "编程手册速查";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.label9);
+            this.tabPage4.Controls.Add(this.label4);
             this.tabPage4.Location = new System.Drawing.Point(4, 34);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Size = new System.Drawing.Size(996, 447);
@@ -125,7 +178,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 101);
+            this.label2.Location = new System.Drawing.Point(14, 123);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(154, 24);
             this.label2.TabIndex = 2;
@@ -134,7 +187,7 @@
             // labelMIPS
             // 
             this.labelMIPS.AutoSize = true;
-            this.labelMIPS.Location = new System.Drawing.Point(174, 101);
+            this.labelMIPS.Location = new System.Drawing.Point(185, 123);
             this.labelMIPS.Name = "labelMIPS";
             this.labelMIPS.Size = new System.Drawing.Size(82, 24);
             this.labelMIPS.TabIndex = 3;
@@ -143,7 +196,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(362, 101);
+            this.label5.Location = new System.Drawing.Point(325, 123);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(58, 24);
             this.label5.TabIndex = 5;
@@ -167,7 +220,7 @@
             "23.592",
             "24",
             "24.576"});
-            this.comboBox1.Location = new System.Drawing.Point(427, 101);
+            this.comboBox1.Location = new System.Drawing.Point(407, 119);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(137, 32);
             this.comboBox1.TabIndex = 6;
@@ -177,7 +230,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(586, 101);
+            this.label6.Location = new System.Drawing.Point(565, 123);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(46, 24);
             this.label6.TabIndex = 7;
@@ -187,7 +240,7 @@
             // 
             this.radioButton1.AutoSize = true;
             this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(639, 104);
+            this.radioButton1.Location = new System.Drawing.Point(639, 121);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(77, 28);
             this.radioButton1.TabIndex = 8;
@@ -199,7 +252,7 @@
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(722, 102);
+            this.radioButton2.Location = new System.Drawing.Point(722, 121);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(65, 28);
             this.radioButton2.TabIndex = 9;
@@ -210,7 +263,7 @@
             // radioButton3
             // 
             this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(793, 99);
+            this.radioButton3.Location = new System.Drawing.Point(793, 121);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(65, 28);
             this.radioButton3.TabIndex = 10;
@@ -221,7 +274,7 @@
             // radioButton4
             // 
             this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(864, 101);
+            this.radioButton4.Location = new System.Drawing.Point(865, 121);
             this.radioButton4.Name = "radioButton4";
             this.radioButton4.Size = new System.Drawing.Size(65, 28);
             this.radioButton4.TabIndex = 11;
@@ -232,7 +285,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(936, 104);
+            this.label7.Location = new System.Drawing.Point(941, 107);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(106, 24);
             this.label7.TabIndex = 12;
@@ -250,7 +303,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(940, 152);
+            this.label8.Location = new System.Drawing.Point(941, 142);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(106, 24);
             this.label8.TabIndex = 14;
@@ -259,61 +312,55 @@
             // labelMacTime
             // 
             this.labelMacTime.AutoSize = true;
-            this.labelMacTime.Location = new System.Drawing.Point(1053, 152);
+            this.labelMacTime.Location = new System.Drawing.Point(1049, 142);
             this.labelMacTime.Name = "labelMacTime";
             this.labelMacTime.Size = new System.Drawing.Size(82, 24);
             this.labelMacTime.TabIndex = 15;
             this.labelMacTime.Text = "label9";
             // 
-            // textBoxus
+            // listBox1
             // 
-            this.textBoxus.Location = new System.Drawing.Point(132, 44);
-            this.textBoxus.Name = "textBoxus";
-            this.textBoxus.Size = new System.Drawing.Size(100, 35);
-            this.textBoxus.TabIndex = 0;
-            this.textBoxus.Text = "1000";
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 24;
+            this.listBox1.Items.AddRange(new object[] {
+            "C51关键字",
+            "运算优先级和结合性"});
+            this.listBox1.Location = new System.Drawing.Point(26, 38);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(257, 364);
+            this.listBox1.TabIndex = 0;
             // 
-            // button1
+            // webBrowser1
             // 
-            this.button1.Location = new System.Drawing.Point(259, 37);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 39);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "计算";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.webBrowser1.Location = new System.Drawing.Point(297, 38);
+            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser1.Name = "webBrowser1";
+            this.webBrowser1.Size = new System.Drawing.Size(666, 364);
+            this.webBrowser1.TabIndex = 1;
             // 
-            // labelABC
+            // label4
             // 
-            this.labelABC.AutoSize = true;
-            this.labelABC.Location = new System.Drawing.Point(396, 58);
-            this.labelABC.Name = "labelABC";
-            this.labelABC.Size = new System.Drawing.Size(82, 24);
-            this.labelABC.TabIndex = 2;
-            this.labelABC.Text = "label3";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(32, 35);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(130, 24);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "关于本软件";
             // 
-            // label3
+            // label9
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 44);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(106, 24);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "延时时间";
-            // 
-            // textBoxRes
-            // 
-            this.textBoxRes.Location = new System.Drawing.Point(24, 127);
-            this.textBoxRes.Multiline = true;
-            this.textBoxRes.Name = "textBoxRes";
-            this.textBoxRes.Size = new System.Drawing.Size(539, 274);
-            this.textBoxRes.TabIndex = 4;
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(68, 92);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(634, 24);
+            this.label9.TabIndex = 1;
+            this.label9.Text = "本软件提供了单片机常用的一些计算工具和常用编程手册。";
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1376, 712);
+            this.ClientSize = new System.Drawing.Size(1207, 712);
             this.Controls.Add(this.labelMacTime);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.labelClkTime);
@@ -330,11 +377,14 @@
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label1);
             this.Name = "FormMain";
-            this.Text = "Form1";
+            this.Text = "单片机助手 v0.2";
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -366,6 +416,10 @@
         private System.Windows.Forms.Label labelABC;
         private System.Windows.Forms.TextBox textBoxRes;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.WebBrowser webBrowser1;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label4;
     }
 }
 
