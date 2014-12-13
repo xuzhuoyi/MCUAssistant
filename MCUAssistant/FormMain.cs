@@ -90,11 +90,10 @@ namespace MCUAssistant
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Uri urlPath;
-            //urlPath=Uri.UriSchemeFile+ Uri.SchemeDelimiter Path.GetFullPath(Environment.CurrentDirectory+"page.htm").Replace(Path.DirectorySeparatorChar, '/');
             if (listBox1.SelectedIndex == 0)
-                //System.Windows.Forms.MessageBox.Show("sss");
-                webBrowser1.Navigate("file://" + Environment.CurrentDirectory + "c51keyhelp.html");
+                webBrowser1.Url = new Uri(Application.StartupPath + @"\c51keyhelp.html");
+            else if (listBox1.SelectedIndex == 1)
+                webBrowser1.Url = new Uri(Application.StartupPath + @"\cjyhelp.mht");
             
 
         }

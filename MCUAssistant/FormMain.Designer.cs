@@ -169,7 +169,7 @@
             this.webBrowser1.Location = new System.Drawing.Point(297, 38);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(666, 364);
+            this.webBrowser1.Size = new System.Drawing.Size(842, 364);
             this.webBrowser1.TabIndex = 1;
             // 
             // listBox1
@@ -378,7 +378,7 @@
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label1);
             this.Name = "FormMain";
-            this.Text = "单片机助手 v0.2";
+            this.Text = "单片机助手 v0.3";
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
