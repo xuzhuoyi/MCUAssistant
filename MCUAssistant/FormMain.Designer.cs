@@ -38,7 +38,11 @@
             this.textBoxus = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.labelMIPS = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -52,10 +56,6 @@
             this.labelClkTime = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.labelMacTime = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -148,7 +148,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 34);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(996, 447);
+            this.tabPage2.Size = new System.Drawing.Size(1170, 447);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "定时器/计数器";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -159,10 +159,31 @@
             this.tabPage3.Controls.Add(this.listBox1);
             this.tabPage3.Location = new System.Drawing.Point(4, 34);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1106, 447);
+            this.tabPage3.Size = new System.Drawing.Size(1170, 447);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "编程手册速查";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // webBrowser1
+            // 
+            this.webBrowser1.Location = new System.Drawing.Point(297, 38);
+            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser1.Name = "webBrowser1";
+            this.webBrowser1.Size = new System.Drawing.Size(666, 364);
+            this.webBrowser1.TabIndex = 1;
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 24;
+            this.listBox1.Items.AddRange(new object[] {
+            "C51关键字",
+            "运算优先级和结合性"});
+            this.listBox1.Location = new System.Drawing.Point(26, 38);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(257, 364);
+            this.listBox1.TabIndex = 0;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // tabPage4
             // 
@@ -170,10 +191,28 @@
             this.tabPage4.Controls.Add(this.label4);
             this.tabPage4.Location = new System.Drawing.Point(4, 34);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(996, 447);
+            this.tabPage4.Size = new System.Drawing.Size(1170, 447);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "关于";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(68, 92);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(634, 24);
+            this.label9.TabIndex = 1;
+            this.label9.Text = "本软件提供了单片机常用的一些计算工具和常用编程手册。";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(32, 35);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(130, 24);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "关于本软件";
             // 
             // label2
             // 
@@ -317,44 +356,6 @@
             this.labelMacTime.Size = new System.Drawing.Size(82, 24);
             this.labelMacTime.TabIndex = 15;
             this.labelMacTime.Text = "label9";
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 24;
-            this.listBox1.Items.AddRange(new object[] {
-            "C51关键字",
-            "运算优先级和结合性"});
-            this.listBox1.Location = new System.Drawing.Point(26, 38);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(257, 364);
-            this.listBox1.TabIndex = 0;
-            // 
-            // webBrowser1
-            // 
-            this.webBrowser1.Location = new System.Drawing.Point(297, 38);
-            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(666, 364);
-            this.webBrowser1.TabIndex = 1;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(32, 35);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(130, 24);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "关于本软件";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(68, 92);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(634, 24);
-            this.label9.TabIndex = 1;
-            this.label9.Text = "本软件提供了单片机常用的一些计算工具和常用编程手册。";
             // 
             // FormMain
             // 

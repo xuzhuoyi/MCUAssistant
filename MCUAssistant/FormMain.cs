@@ -87,5 +87,16 @@ namespace MCUAssistant
                         if (Math.Abs(2 * a * b * c + 3 * b * c + 3 * c + 3 - time) < 2) return; 
                     }
         }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Uri urlPath;
+            //urlPath=Uri.UriSchemeFile+ Uri.SchemeDelimiter Path.GetFullPath(Environment.CurrentDirectory+"page.htm").Replace(Path.DirectorySeparatorChar, '/');
+            if (listBox1.SelectedIndex == 0)
+                //System.Windows.Forms.MessageBox.Show("sss");
+                webBrowser1.Navigate("file://" + Environment.CurrentDirectory + "c51keyhelp.html");
+            
+
+        }
     }
 }
