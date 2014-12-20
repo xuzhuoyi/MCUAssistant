@@ -14,6 +14,14 @@ namespace MCUAssistant
         float cryFreq, clkTime;
         int perMacTime;
         int a, b, c;
+        Res r1, r2, r3, r4, r5;
+
+        struct Res
+        {
+            public float value;
+            public bool enable;
+        }
+
         public FormMain()
         {
             InitializeComponent();
@@ -96,6 +104,61 @@ namespace MCUAssistant
                 webBrowser1.Url = new Uri(Application.StartupPath + @"\cjyhelp.mht");
             
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            initCheck();
+            checkREnabel();
+            textBoxR.Text = calcRes().ToString();
+            
+
+        }
+
+        private void checkREnabel()
+        {
+            if (textBoxR1.Text == "" || textBoxR1.Text == "0")
+                r1.enable = false;
+            if (textBoxR2.Text == "" || textBoxR2.Text == "0")
+                r2.enable = false;
+            if (textBoxR3.Text == "" || textBoxR3.Text == "0")
+                r3.enable = false;
+            if (textBoxR4.Text == "" || textBoxR4.Text == "0")
+                r4.enable = false;
+            if (textBoxR5.Text == "" || textBoxR5.Text == "0")
+                r5.enable = false;
+            if (r1.enable)
+                r1.value = 1 / int.Parse(textBoxR1.Text);
+            if (r2.enable)
+                r2.value = 1 / int.Parse(textBoxR2.Text);
+            if (r3.enable)
+                r3.value = 1 / int.Parse(textBoxR3.Text);
+            if (r4.enable)
+                r4.value = 1 / int.Parse(textBoxR4.Text);
+            if (r5.enable)
+                r5.value = 1 / int.Parse(textBoxR5.Text);
+
+        }
+
+        private float calcRes()
+        {
+            float r;
+            r = 1 / (r1.value + r2.value + r3.value + r4.value + r5.value);
+            return r;
+        }
+
+        private void initCheck()
+        {
+            r1.enable = true;
+            r2.enable = true;
+            r3.enable = true;
+            r4.enable = true;
+            r5.enable = true;
+            r1.value = 0;
+            r2.value = 0;
+            r3.value = 0;
+            r4.value = 0;
+            r5.value = 0;
         }
     }
 }
