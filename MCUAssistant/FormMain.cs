@@ -18,8 +18,9 @@ namespace MCUAssistant
 
         struct Res
         {
-            public float value;
+            public double value;
             public bool enable;
+            public int unit;
         }
 
         public FormMain()
@@ -31,6 +32,7 @@ namespace MCUAssistant
         {
             
             setCal();
+            initOmegaOption();
             
         }
 
@@ -108,8 +110,11 @@ namespace MCUAssistant
 
         private void button2_Click(object sender, EventArgs e)
         {
+            
             initCheck();
+            checkRUnit();
             checkREnabel();
+            
             textBoxR.Text = calcRes().ToString();
             
 
@@ -128,22 +133,27 @@ namespace MCUAssistant
             if (textBoxR5.Text == "" || textBoxR5.Text == "0")
                 r5.enable = false;
             if (r1.enable)
-                r1.value = 1 / int.Parse(textBoxR1.Text);
+                r1.value = 1.0 / int.Parse(textBoxR1.Text);
             if (r2.enable)
-                r2.value = 1 / int.Parse(textBoxR2.Text);
+                r2.value = 1.0 / int.Parse(textBoxR2.Text);
             if (r3.enable)
-                r3.value = 1 / int.Parse(textBoxR3.Text);
+                r3.value = 1.0 / int.Parse(textBoxR3.Text);
             if (r4.enable)
-                r4.value = 1 / int.Parse(textBoxR4.Text);
+                r4.value = 1.0 / int.Parse(textBoxR4.Text);
             if (r5.enable)
-                r5.value = 1 / int.Parse(textBoxR5.Text);
+                r5.value = 1.0 / int.Parse(textBoxR5.Text);
 
         }
 
-        private float calcRes()
+        private double calcRes()
         {
-            float r;
-            r = 1 / (r1.value + r2.value + r3.value + r4.value + r5.value);
+            calcUnitedRes(ref r1);
+            calcUnitedRes(ref r2);
+            calcUnitedRes(ref r3);
+            calcUnitedRes(ref r4);
+            calcUnitedRes(ref r5);
+            double r;
+            r = 1.0 / (r1.value + r2.value + r3.value + r4.value + r5.value);
             return r;
         }
 
@@ -159,6 +169,44 @@ namespace MCUAssistant
             r3.value = 0;
             r4.value = 0;
             r5.value = 0;
+        }
+
+        private void  initOmegaOption()
+        {
+            comboBoxOmegaType1.SelectedIndex = 1;
+            comboBoxOmegaType2.SelectedIndex = 1;
+            comboBoxOmegaType3.SelectedIndex = 1;
+            comboBoxOmegaType4.SelectedIndex = 1;
+            comboBoxOmegaType5.SelectedIndex = 1;
+        }
+
+        private void checkRUnit()
+        {
+            r1.unit = comboBoxOmegaType1.SelectedIndex;
+            r2.unit = comboBoxOmegaType2.SelectedIndex;
+            r3.unit = comboBoxOmegaType3.SelectedIndex;
+            r4.unit = comboBoxOmegaType4.SelectedIndex;
+            r5.unit = comboBoxOmegaType5.SelectedIndex;
+        }
+
+        private void calcUnitedRes(ref Res inRes)
+        {
+            switch (inRes.unit)
+            {
+                case 0 :
+                    inRes.value *= 1000;
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    inRes.value /= 1000;
+                    break;
+                case 3:
+                    inRes.value /= 1000000;
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }
