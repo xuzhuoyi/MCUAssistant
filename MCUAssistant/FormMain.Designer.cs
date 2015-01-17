@@ -41,6 +41,12 @@
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.label17 = new System.Windows.Forms.Label();
+            this.comboBoxOmegaType5 = new System.Windows.Forms.ComboBox();
+            this.comboBoxOmegaType4 = new System.Windows.Forms.ComboBox();
+            this.comboBoxOmegaType3 = new System.Windows.Forms.ComboBox();
+            this.comboBoxOmegaType2 = new System.Windows.Forms.ComboBox();
+            this.comboBoxOmegaType1 = new System.Windows.Forms.ComboBox();
             this.textBoxR = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
@@ -71,14 +77,12 @@
             this.labelClkTime = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.labelMacTime = new System.Windows.Forms.Label();
-            this.comboBoxOmegaType1 = new System.Windows.Forms.ComboBox();
-            this.comboBoxOmegaType2 = new System.Windows.Forms.ComboBox();
-            this.comboBoxOmegaType3 = new System.Windows.Forms.ComboBox();
-            this.comboBoxOmegaType4 = new System.Windows.Forms.ComboBox();
-            this.comboBoxOmegaType5 = new System.Windows.Forms.ComboBox();
-            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.tabPage4.SuspendLayout();
@@ -87,10 +91,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("宋体", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(43, 35);
+            this.label1.Font = new System.Drawing.Font("Calibri", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(294, 45);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(277, 37);
+            this.label1.Size = new System.Drawing.Size(244, 45);
             this.label1.TabIndex = 0;
             this.label1.Text = "MCU Assistant";
             // 
@@ -105,7 +109,7 @@
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1178, 485);
+            this.tabControl1.Size = new System.Drawing.Size(1178, 505);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
@@ -168,10 +172,11 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.label18);
             this.tabPage2.Location = new System.Drawing.Point(4, 34);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1170, 447);
+            this.tabPage2.Size = new System.Drawing.Size(1170, 467);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "定时器/计数器";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -210,6 +215,7 @@
             // 
             // tabPage5
             // 
+            this.tabPage5.Controls.Add(this.label19);
             this.tabPage5.Controls.Add(this.label17);
             this.tabPage5.Controls.Add(this.comboBoxOmegaType5);
             this.tabPage5.Controls.Add(this.comboBoxOmegaType4);
@@ -232,32 +238,111 @@
             this.tabPage5.Controls.Add(this.label10);
             this.tabPage5.Location = new System.Drawing.Point(4, 34);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(1170, 447);
+            this.tabPage5.Size = new System.Drawing.Size(1170, 467);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "其他辅助工具";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(277, 29);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(574, 24);
+            this.label17.TabIndex = 19;
+            this.label17.Text = "符号说明：mΩ 毫欧  Ω 欧姆  KΩ 千欧  MΩ 兆欧";
+            // 
+            // comboBoxOmegaType5
+            // 
+            this.comboBoxOmegaType5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxOmegaType5.FormattingEnabled = true;
+            this.comboBoxOmegaType5.Items.AddRange(new object[] {
+            "mΩ",
+            "Ω",
+            "KΩ",
+            "MΩ"});
+            this.comboBoxOmegaType5.Location = new System.Drawing.Point(308, 329);
+            this.comboBoxOmegaType5.Name = "comboBoxOmegaType5";
+            this.comboBoxOmegaType5.Size = new System.Drawing.Size(121, 32);
+            this.comboBoxOmegaType5.TabIndex = 18;
+            // 
+            // comboBoxOmegaType4
+            // 
+            this.comboBoxOmegaType4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxOmegaType4.FormattingEnabled = true;
+            this.comboBoxOmegaType4.Items.AddRange(new object[] {
+            "mΩ",
+            "Ω",
+            "KΩ",
+            "MΩ"});
+            this.comboBoxOmegaType4.Location = new System.Drawing.Point(308, 268);
+            this.comboBoxOmegaType4.Name = "comboBoxOmegaType4";
+            this.comboBoxOmegaType4.Size = new System.Drawing.Size(121, 32);
+            this.comboBoxOmegaType4.TabIndex = 17;
+            // 
+            // comboBoxOmegaType3
+            // 
+            this.comboBoxOmegaType3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxOmegaType3.FormattingEnabled = true;
+            this.comboBoxOmegaType3.Items.AddRange(new object[] {
+            "mΩ",
+            "Ω",
+            "KΩ",
+            "MΩ"});
+            this.comboBoxOmegaType3.Location = new System.Drawing.Point(308, 207);
+            this.comboBoxOmegaType3.Name = "comboBoxOmegaType3";
+            this.comboBoxOmegaType3.Size = new System.Drawing.Size(121, 32);
+            this.comboBoxOmegaType3.TabIndex = 16;
+            // 
+            // comboBoxOmegaType2
+            // 
+            this.comboBoxOmegaType2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxOmegaType2.FormattingEnabled = true;
+            this.comboBoxOmegaType2.Items.AddRange(new object[] {
+            "mΩ",
+            "Ω",
+            "KΩ",
+            "MΩ"});
+            this.comboBoxOmegaType2.Location = new System.Drawing.Point(308, 146);
+            this.comboBoxOmegaType2.Name = "comboBoxOmegaType2";
+            this.comboBoxOmegaType2.Size = new System.Drawing.Size(121, 32);
+            this.comboBoxOmegaType2.TabIndex = 15;
+            // 
+            // comboBoxOmegaType1
+            // 
+            this.comboBoxOmegaType1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxOmegaType1.FormattingEnabled = true;
+            this.comboBoxOmegaType1.Items.AddRange(new object[] {
+            "mΩ",
+            "Ω",
+            "KΩ",
+            "MΩ"});
+            this.comboBoxOmegaType1.Location = new System.Drawing.Point(308, 85);
+            this.comboBoxOmegaType1.Name = "comboBoxOmegaType1";
+            this.comboBoxOmegaType1.Size = new System.Drawing.Size(121, 32);
+            this.comboBoxOmegaType1.TabIndex = 14;
+            // 
             // textBoxR
             // 
-            this.textBoxR.Location = new System.Drawing.Point(602, 113);
+            this.textBoxR.Location = new System.Drawing.Point(790, 207);
             this.textBoxR.Name = "textBoxR";
-            this.textBoxR.Size = new System.Drawing.Size(100, 35);
+            this.textBoxR.Size = new System.Drawing.Size(200, 35);
             this.textBoxR.TabIndex = 13;
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(544, 116);
+            this.label16.Location = new System.Drawing.Point(614, 210);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(22, 24);
+            this.label16.Size = new System.Drawing.Size(154, 24);
             this.label16.TabIndex = 12;
-            this.label16.Text = "R";
+            this.label16.Text = "并联后电阻 R";
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(168, 387);
+            this.button2.Location = new System.Drawing.Point(141, 395);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 47);
+            this.button2.Size = new System.Drawing.Size(158, 47);
             this.button2.TabIndex = 11;
             this.button2.Text = "计算";
             this.button2.UseVisualStyleBackColor = true;
@@ -265,37 +350,37 @@
             // 
             // textBoxR5
             // 
-            this.textBoxR5.Location = new System.Drawing.Point(168, 329);
+            this.textBoxR5.Location = new System.Drawing.Point(141, 329);
             this.textBoxR5.Name = "textBoxR5";
-            this.textBoxR5.Size = new System.Drawing.Size(100, 35);
+            this.textBoxR5.Size = new System.Drawing.Size(127, 35);
             this.textBoxR5.TabIndex = 10;
             // 
             // textBoxR4
             // 
-            this.textBoxR4.Location = new System.Drawing.Point(168, 268);
+            this.textBoxR4.Location = new System.Drawing.Point(141, 268);
             this.textBoxR4.Name = "textBoxR4";
-            this.textBoxR4.Size = new System.Drawing.Size(100, 35);
+            this.textBoxR4.Size = new System.Drawing.Size(127, 35);
             this.textBoxR4.TabIndex = 9;
             // 
             // textBoxR3
             // 
-            this.textBoxR3.Location = new System.Drawing.Point(168, 207);
+            this.textBoxR3.Location = new System.Drawing.Point(141, 207);
             this.textBoxR3.Name = "textBoxR3";
-            this.textBoxR3.Size = new System.Drawing.Size(100, 35);
+            this.textBoxR3.Size = new System.Drawing.Size(127, 35);
             this.textBoxR3.TabIndex = 8;
             // 
             // textBoxR2
             // 
-            this.textBoxR2.Location = new System.Drawing.Point(168, 146);
+            this.textBoxR2.Location = new System.Drawing.Point(141, 146);
             this.textBoxR2.Name = "textBoxR2";
-            this.textBoxR2.Size = new System.Drawing.Size(100, 35);
+            this.textBoxR2.Size = new System.Drawing.Size(127, 35);
             this.textBoxR2.TabIndex = 7;
             // 
             // textBoxR1
             // 
-            this.textBoxR1.Location = new System.Drawing.Point(168, 85);
+            this.textBoxR1.Location = new System.Drawing.Point(141, 85);
             this.textBoxR1.Name = "textBoxR1";
-            this.textBoxR1.Size = new System.Drawing.Size(100, 35);
+            this.textBoxR1.Size = new System.Drawing.Size(127, 35);
             this.textBoxR1.TabIndex = 6;
             // 
             // label15
@@ -524,90 +609,40 @@
             this.labelMacTime.TabIndex = 15;
             this.labelMacTime.Text = "label9";
             // 
-            // comboBoxOmegaType1
+            // label18
             // 
-            this.comboBoxOmegaType1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxOmegaType1.FormattingEnabled = true;
-            this.comboBoxOmegaType1.Items.AddRange(new object[] {
-            "mΩ",
-            "Ω",
-            "KΩ",
-            "MΩ"});
-            this.comboBoxOmegaType1.Location = new System.Drawing.Point(308, 85);
-            this.comboBoxOmegaType1.Name = "comboBoxOmegaType1";
-            this.comboBoxOmegaType1.Size = new System.Drawing.Size(121, 32);
-            this.comboBoxOmegaType1.TabIndex = 14;
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(29, 39);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(490, 24);
+            this.label18.TabIndex = 0;
+            this.label18.Text = "本版本为特性预览版，本功能还在开发中……";
             // 
-            // comboBoxOmegaType2
+            // label19
             // 
-            this.comboBoxOmegaType2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxOmegaType2.FormattingEnabled = true;
-            this.comboBoxOmegaType2.Items.AddRange(new object[] {
-            "mΩ",
-            "Ω",
-            "KΩ",
-            "MΩ"});
-            this.comboBoxOmegaType2.Location = new System.Drawing.Point(308, 146);
-            this.comboBoxOmegaType2.Name = "comboBoxOmegaType2";
-            this.comboBoxOmegaType2.Size = new System.Drawing.Size(121, 32);
-            this.comboBoxOmegaType2.TabIndex = 15;
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(566, 154);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(130, 24);
+            this.label19.TabIndex = 20;
+            this.label19.Text = "计算结果：";
             // 
-            // comboBoxOmegaType3
+            // label20
             // 
-            this.comboBoxOmegaType3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxOmegaType3.FormattingEnabled = true;
-            this.comboBoxOmegaType3.Items.AddRange(new object[] {
-            "mΩ",
-            "Ω",
-            "KΩ",
-            "MΩ"});
-            this.comboBoxOmegaType3.Location = new System.Drawing.Point(308, 207);
-            this.comboBoxOmegaType3.Name = "comboBoxOmegaType3";
-            this.comboBoxOmegaType3.Size = new System.Drawing.Size(121, 32);
-            this.comboBoxOmegaType3.TabIndex = 16;
-            // 
-            // comboBoxOmegaType4
-            // 
-            this.comboBoxOmegaType4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxOmegaType4.FormattingEnabled = true;
-            this.comboBoxOmegaType4.Items.AddRange(new object[] {
-            "mΩ",
-            "Ω",
-            "KΩ",
-            "MΩ"});
-            this.comboBoxOmegaType4.Location = new System.Drawing.Point(308, 268);
-            this.comboBoxOmegaType4.Name = "comboBoxOmegaType4";
-            this.comboBoxOmegaType4.Size = new System.Drawing.Size(121, 32);
-            this.comboBoxOmegaType4.TabIndex = 17;
-            // 
-            // comboBoxOmegaType5
-            // 
-            this.comboBoxOmegaType5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxOmegaType5.FormattingEnabled = true;
-            this.comboBoxOmegaType5.Items.AddRange(new object[] {
-            "mΩ",
-            "Ω",
-            "KΩ",
-            "MΩ"});
-            this.comboBoxOmegaType5.Location = new System.Drawing.Point(308, 329);
-            this.comboBoxOmegaType5.Name = "comboBoxOmegaType5";
-            this.comboBoxOmegaType5.Size = new System.Drawing.Size(121, 32);
-            this.comboBoxOmegaType5.TabIndex = 18;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(277, 29);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(574, 24);
-            this.label17.TabIndex = 19;
-            this.label17.Text = "符号说明：mΩ 毫欧  Ω 欧姆  KΩ 千欧  MΩ 兆欧";
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("微软雅黑", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label20.Location = new System.Drawing.Point(45, 40);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(207, 50);
+            this.label20.TabIndex = 16;
+            this.label20.Text = "单片机助手";
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1207, 712);
+            this.Controls.Add(this.label20);
             this.Controls.Add(this.labelMacTime);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.labelClkTime);
@@ -624,11 +659,13 @@
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label1);
             this.Name = "FormMain";
-            this.Text = "单片机助手 v0.3";
+            this.Text = "单片机助手 v0.4";
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
@@ -690,6 +727,9 @@
         private System.Windows.Forms.ComboBox comboBoxOmegaType2;
         private System.Windows.Forms.ComboBox comboBoxOmegaType1;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
     }
 }
 
