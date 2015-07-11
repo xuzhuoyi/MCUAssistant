@@ -297,7 +297,7 @@
             this.tabPage5.Controls.Add(this.label10);
             this.tabPage5.Location = new System.Drawing.Point(4, 34);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(1170, 604);
+            this.tabPage5.Size = new System.Drawing.Size(1170, 561);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "其他辅助工具";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -511,7 +511,7 @@
             this.tabPage4.Controls.Add(this.label4);
             this.tabPage4.Location = new System.Drawing.Point(4, 34);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(1170, 467);
+            this.tabPage4.Size = new System.Drawing.Size(1170, 561);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "关于";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -754,6 +754,7 @@
             this.txtSend.Name = "txtSend";
             this.txtSend.Size = new System.Drawing.Size(560, 35);
             this.txtSend.TabIndex = 21;
+            this.txtSend.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSend_KeyPress);
             // 
             // label21
             // 
@@ -782,6 +783,7 @@
             this.txtSecond.Name = "txtSecond";
             this.txtSecond.Size = new System.Drawing.Size(84, 35);
             this.txtSecond.TabIndex = 18;
+            this.txtSecond.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSecond_KeyPress);
             // 
             // label23
             // 
@@ -815,6 +817,10 @@
             this.rdSendStr.TabStop = true;
             this.rdSendStr.Text = "字符串";
             this.rdSendStr.UseVisualStyleBackColor = true;
+            // 
+            // tmSend
+            // 
+            this.tmSend.Tick += new System.EventHandler(this.tmSend_Tick);
             // 
             // btnExit
             // 
@@ -881,6 +887,7 @@
             this.btnSave.TabIndex = 32;
             this.btnSave.Text = "保存设置";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // label24
             // 
@@ -1161,7 +1168,7 @@
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label1);
             this.Name = "FormMain";
-            this.Text = "单片机助手 v0.4";
+            this.Text = "单片机助手 v1.0 RC1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.tabControl1.ResumeLayout(false);

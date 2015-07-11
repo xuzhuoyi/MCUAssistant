@@ -606,5 +606,115 @@ namespace MCUAssistant
             INIFILE.Profile.SaveProfile();
             sp1.Close();
         }
+
+        private void txtSend_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (radio1.Checked == true)
+            {
+                //正则匹配
+                string patten = "[0-9a-fA-F]|\b|0x|0X| "; //“\b”：退格键
+                Regex r = new Regex(patten);
+                Match m = r.Match(e.KeyChar.ToString());
+
+                if (m.Success)//&&(txtSend.Text.LastIndexOf(" ") != txtSend.Text.Length-1))
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                }
+            }//end of radio1
+            else
+            {
+                e.Handled = false;
+            }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            //设置各“串口设置”
+            string strBaudRate = cbBaudRate.Text;
+            string strDateBits = cbDataBits.Text;
+            string strStopBits = cbStop.Text;
+            Int32 iBaudRate = Convert.ToInt32(strBaudRate);
+            Int32 iDateBits = Convert.ToInt32(strDateBits);
+
+            Profile.G_BAUDRATE = iBaudRate + "";       //波特率
+            Profile.G_DATABITS = iDateBits + "";       //数据位
+            switch (cbStop.Text)            //停止位
+            {
+                case "1":
+                    Profile.G_STOP = "1";
+                    break;
+                case "1.5":
+                    Profile.G_STOP = "1.5";
+                    break;
+                case "2":
+                    Profile.G_STOP = "2";
+                    break;
+                default:
+                    MessageBox.Show("Error：参数不正确!", "Error");
+                    break;
+            }
+            switch (cbParity.Text)             //校验位
+            {
+                case "无":
+                    Profile.G_PARITY = "NONE";
+                    break;
+                case "奇校验":
+                    Profile.G_PARITY = "ODD";
+                    break;
+                case "偶校验":
+                    Profile.G_PARITY = "EVEN";
+                    break;
+                default:
+                    MessageBox.Show("Error：参数不正确!", "Error");
+                    break;
+            }
+
+            //保存设置
+            // public static string G_BAUDRATE = "1200";//给ini文件赋新值，并且影响界面下拉框的显示
+            //public static string G_DATABITS = "8";
+            //public static string G_STOP = "1";
+            //public static string G_PARITY = "NONE";
+            Profile.SaveProfile();
+        }
+
+        private void tmSend_Tick(object sender, EventArgs e)
+        {
+            //转换时间间隔
+            string strSecond = txtSecond.Text;
+            try
+            {
+                int isecond = int.Parse(strSecond) * 1000;//Interval以微秒为单位
+                tmSend.Interval = isecond;
+                if (tmSend.Enabled == true)
+                {
+                    btnSend.PerformClick();
+                }
+            }
+            catch (System.Exception)
+            {
+                tmSend.Enabled = false;
+                MessageBox.Show("错误的定时输入！", "Error");
+            }
+        }
+
+        private void txtSecond_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            string patten = "[0-9]|\b"; //“\b”：退格键
+            Regex r = new Regex(patten);
+            Match m = r.Match(e.KeyChar.ToString());
+
+            if (m.Success)
+            {
+                e.Handled = false;   //没操作“过”，系统会处理事件    
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
     }
 }
