@@ -745,6 +745,7 @@
             this.btnSend.TabIndex = 22;
             this.btnSend.Text = "发送";
             this.btnSend.UseVisualStyleBackColor = true;
+            this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
             // 
             // txtSend
             // 
@@ -1028,6 +1029,7 @@
             this.btnClear.TabIndex = 16;
             this.btnClear.Text = "清空";
             this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // groupBox8
             // 
@@ -1075,6 +1077,7 @@
             this.btnSwitch.TabIndex = 9;
             this.btnSwitch.Text = "打开串口";
             this.btnSwitch.UseVisualStyleBackColor = true;
+            this.btnSwitch.Click += new System.EventHandler(this.btnSwitch_Click);
             // 
             // cbSerial
             // 
@@ -1159,6 +1162,7 @@
             this.Controls.Add(this.label1);
             this.Name = "FormMain";
             this.Text = "单片机助手 v0.4";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
