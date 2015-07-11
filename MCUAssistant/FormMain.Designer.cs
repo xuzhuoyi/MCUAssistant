@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -94,7 +95,6 @@
             this.cbTimeSend = new System.Windows.Forms.CheckBox();
             this.rdSendStr = new System.Windows.Forms.RadioButton();
             this.tmSend = new System.Windows.Forms.Timer(this.components);
-            this.btnExit = new System.Windows.Forms.Button();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tsSpNum = new System.Windows.Forms.ToolStripStatusLabel();
@@ -690,9 +690,7 @@
             // tabPage6
             // 
             this.tabPage6.Controls.Add(this.groupBox2);
-            this.tabPage6.Controls.Add(this.btnExit);
             this.tabPage6.Controls.Add(this.statusStrip1);
-            this.tabPage6.Controls.Add(this.btnClear);
             this.tabPage6.Controls.Add(this.groupBox1);
             this.tabPage6.Location = new System.Drawing.Point(4, 34);
             this.tabPage6.Name = "tabPage6";
@@ -716,11 +714,12 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.txtReceive);
+            this.groupBox2.Controls.Add(this.btnClear);
             this.groupBox2.Location = new System.Drawing.Point(612, 6);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(6);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(6);
-            this.groupBox2.Size = new System.Drawing.Size(552, 423);
+            this.groupBox2.Size = new System.Drawing.Size(544, 493);
             this.groupBox2.TabIndex = 14;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "接收方";
@@ -732,13 +731,13 @@
             this.txtReceive.Margin = new System.Windows.Forms.Padding(6);
             this.txtReceive.Name = "txtReceive";
             this.txtReceive.ReadOnly = true;
-            this.txtReceive.Size = new System.Drawing.Size(528, 342);
+            this.txtReceive.Size = new System.Drawing.Size(502, 383);
             this.txtReceive.TabIndex = 0;
             this.txtReceive.Text = "";
             // 
             // btnSend
             // 
-            this.btnSend.Location = new System.Drawing.Point(456, 442);
+            this.btnSend.Location = new System.Drawing.Point(452, 431);
             this.btnSend.Margin = new System.Windows.Forms.Padding(6);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(120, 50);
@@ -822,16 +821,6 @@
             // 
             this.tmSend.Tick += new System.EventHandler(this.tmSend_Tick);
             // 
-            // btnExit
-            // 
-            this.btnExit.Location = new System.Drawing.Point(1038, 446);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(6);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(118, 46);
-            this.btnExit.TabIndex = 15;
-            this.btnExit.Text = "退出";
-            this.btnExit.UseVisualStyleBackColor = true;
-            // 
             // statusStrip1
             // 
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
@@ -897,9 +886,9 @@
             this.label24.Location = new System.Drawing.Point(14, 440);
             this.label24.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(442, 24);
+            this.label24.Size = new System.Drawing.Size(418, 24);
             this.label24.TabIndex = 31;
-            this.label24.Text = "(16进制时，用空格或“，”将字节隔开)";
+            this.label24.Text = "(16进制时用空格或“，”将字节隔开)";
             // 
             // groupBox3
             // 
@@ -1029,7 +1018,7 @@
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(908, 446);
+            this.btnClear.Location = new System.Drawing.Point(396, 431);
             this.btnClear.Margin = new System.Windows.Forms.Padding(6);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(118, 46);
@@ -1141,7 +1130,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(6);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(6);
-            this.groupBox1.Size = new System.Drawing.Size(594, 501);
+            this.groupBox1.Size = new System.Drawing.Size(594, 493);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "发送方";
@@ -1167,6 +1156,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormMain";
             this.Text = "单片机助手 v1.0 RC1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
@@ -1256,7 +1246,6 @@
         private System.Windows.Forms.TabPage tabPage6;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.RichTextBox txtReceive;
-        private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel tsSpNum;
         private System.Windows.Forms.ToolStripStatusLabel tsBaudRate;
