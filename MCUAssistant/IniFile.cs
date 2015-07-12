@@ -7,34 +7,34 @@ namespace INIFILE
 {
     public abstract class CustomIniFile
     {
-        public CustomIniFile(string AFileName)
+        protected CustomIniFile(string aFileName)
         {
-            FFileName = AFileName;
+            _fFileName = aFileName;
         }
-        private string FFileName;
+        private readonly string _fFileName;
         public string FileName
         {
-            get { return FFileName; }
+            get { return _fFileName; }
         }
-        public virtual bool SectionExists(string Section)
+        public virtual bool SectionExists(string section)
         {
-            List<string> vStrings = new List<string>();
+            var vStrings = new List<string>();
             ReadSections(vStrings);
-            return vStrings.Contains(Section);
+            return vStrings.Contains(section);
         }
-        public virtual bool ValueExists(string Section, string Ident)
+        public virtual bool ValueExists(string section, string ident)
         {
-            List<string> vStrings = new List<string>();
-            ReadSection(Section, vStrings);
-            return vStrings.Contains(Ident);
+            var vStrings = new List<string>();
+            ReadSection(section, vStrings);
+            return vStrings.Contains(ident);
         }
-        public abstract string ReadString(string Section, string Ident, string Default);
-        public abstract bool WriteString(string Section, string Ident, string Value);
-        public abstract bool ReadSectionValues(string Section, List<string> Strings);
-        public abstract bool ReadSection(string Section, List<string> Strings);
-        public abstract bool ReadSections(List<string> Strings);
-        public abstract bool EraseSection(string Section);
-        public abstract bool DeleteKey(string Section, string Ident);
+        public abstract string ReadString(string section, string ident, string Default);
+        public abstract bool WriteString(string section, string ident, string value);
+        public abstract bool ReadSectionValues(string section, List<string> strings);
+        public abstract bool ReadSection(string section, List<string> strings);
+        public abstract bool ReadSections(List<string> strings);
+        public abstract bool EraseSection(string section);
+        public abstract bool DeleteKey(string section, string ident);
         public abstract bool UpdateFile();
     }
    /// <summary>
@@ -62,10 +62,10 @@ namespace INIFILE
 
         /// <summary>
         /// 构造IniFile实例。
-        /// <param name="AFileName">指定文件名</param>
+        /// <param name="aFileName">指定文件名</param>
         /// </summary>
-        public IniFile(string AFileName)
-            : base(AFileName)
+        public IniFile(string aFileName)
+            : base(aFileName)
         {
         }
 
@@ -79,42 +79,42 @@ namespace INIFILE
 
         /// <summary>
         /// 读取字符串值。
-        /// <param name="Ident">指定变量标识。</param>
-        /// <param name="Section">指定所在区域。</param>
+        /// <param name="ident">指定变量标识。</param>
+        /// <param name="section">指定所在区域。</param>
         /// <param name="Default">指定默认值。</param>
         /// <returns>返回读取的字符串。如果读取失败则返回该值。</returns>
         /// </summary>
-        public override string ReadString(string Section, string Ident, string Default)
+        public override string ReadString(string section, string ident, string Default)
         {
-            byte[] vBuffer = new byte[2048];
-            uint vCount = GetPrivateProfileString(Section,
-                Ident, Default, vBuffer, (uint)vBuffer.Length, FileName);
+            var vBuffer = new byte[2048];
+            var vCount = GetPrivateProfileString(section,
+                ident, Default, vBuffer, (uint)vBuffer.Length, FileName);
             return Encoding.Default.GetString(vBuffer, 0, (int)vCount);
         }
         /// <summary>
         /// 写入字符串值。
         /// </summary>
-        /// <param name="Section">指定所在区域。</param>
-        /// <param name="Ident">指定变量标识。</param>
-        /// <param name="Value">所要写入的变量值。</param>
+        /// <param name="section">指定所在区域。</param>
+        /// <param name="ident">指定变量标识。</param>
+        /// <param name="value">所要写入的变量值。</param>
         /// <returns>返回写入是否成功。</returns>
-        public override bool WriteString(string Section, string Ident, string Value)
+        public override bool WriteString(string section, string ident, string value)
         {
-            return WritePrivateProfileString(Section, Ident, Value, FileName);
+            return WritePrivateProfileString(section, ident, value, FileName);
         }
 
         /// <summary>
         /// 获得区域的完整文本。(变量名=值格式)。
         /// </summary>
-        /// <param name="Section">指定区域标识。</param>
-        /// <param name="Strings">输出处理结果。</param>
+        /// <param name="section">指定区域标识。</param>
+        /// <param name="strings">输出处理结果。</param>
         /// <returns>返回读取是否成功。</returns>
-        public override bool ReadSectionValues(string Section, List<string> Strings)
+        public override bool ReadSectionValues(string section, List<string> strings)
         {
-            List<string> vIdentList = new List<string>();
-            if (!ReadSection(Section, vIdentList)) return false;
+            var vIdentList = new List<string>();
+            if (!ReadSection(section, vIdentList)) return false;
             foreach (string vIdent in vIdentList)
-                Strings.Add(string.Format("{0}={1}", vIdent, ReadString(Section, vIdent, "")));
+                strings.Add(string.Format("{0}={1}", vIdent, ReadString(section, vIdent, "")));
             return true;
         }
 
@@ -126,11 +126,11 @@ namespace INIFILE
         /// <returns>返回获取是否成功。</returns>
         public override bool ReadSection(string Section, List<string> Strings)
         {
-            byte[] vBuffer = new byte[16384];
-            uint vLength = GetPrivateProfileString(Section, null, null, vBuffer,
+            var vBuffer = new byte[16384];
+            var vLength = GetPrivateProfileString(Section, null, null, vBuffer,
                 (uint)vBuffer.Length, FileName);
-            int j = 0;
-            for (int i = 0; i < vLength; i++)
+            var j = 0;
+            for (var i = 0; i < vLength; i++)
                 if (vBuffer[i] == 0)
                 {
                     Strings.Add(Encoding.Default.GetString(vBuffer, j, i - j));
@@ -142,18 +142,18 @@ namespace INIFILE
         /// <summary>
         /// 读取区域名列表。
         /// </summary>
-        /// <param name="Strings">指定输出列表。</param>
+        /// <param name="strings">指定输出列表。</param>
         /// <returns></returns>
-        public override bool ReadSections(List<string> Strings)
+        public override bool ReadSections(List<string> strings)
         {
-            byte[] vBuffer = new byte[16384];
-            uint vLength = GetPrivateProfileString(null, null, null, vBuffer,
+            var vBuffer = new byte[16384];
+            var vLength = GetPrivateProfileString(null, null, null, vBuffer,
                 (uint)vBuffer.Length, FileName);
-            int j = 0;
-            for (int i = 0; i < vLength; i++)
+            var j = 0;
+            for (var i = 0; i < vLength; i++)
                 if (vBuffer[i] == 0)
                 {
-                    Strings.Add(Encoding.Default.GetString(vBuffer, j, i - j));
+                    strings.Add(Encoding.Default.GetString(vBuffer, j, i - j));
                     j = i + 1;
                 }
             return true;
@@ -162,22 +162,22 @@ namespace INIFILE
         /// <summary>
         /// 删除指定区域。
         /// </summary>
-        /// <param name="Section">指定区域名。</param>
+        /// <param name="section">指定区域名。</param>
         /// <returns>返回删除是否成功。</returns>
-        public override bool EraseSection(string Section)
+        public override bool EraseSection(string section)
         {
-            return WritePrivateProfileString(Section, null, null, FileName);
+            return WritePrivateProfileString(section, null, null, FileName);
         }
 
         /// <summary>
         /// 删除指定变量。
         /// </summary>
-        /// <param name="Section">变量所在区域。</param>
-        /// <param name="Ident">变量标识。</param>
+        /// <param name="section">变量所在区域。</param>
+        /// <param name="ident">变量标识。</param>
         /// <returns>返回删除是否成功。</returns>
-        public override bool DeleteKey(string Section, string Ident)
+        public override bool DeleteKey(string section, string ident)
         {
-            return WritePrivateProfileString(Section, Ident, null, FileName);
+            return WritePrivateProfileString(section, ident, null, FileName);
         }
 
         /// <summary>

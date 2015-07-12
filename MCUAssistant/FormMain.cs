@@ -225,7 +225,7 @@ namespace MCUAssistant
             INIFILE.Profile.LoadProfile();//加载所有
 
             // 预置波特率
-            switch (Profile.G_BAUDRATE)
+            switch (Profile.GBudrate)
             {
                 case "300":
                     cbBaudRate.SelectedIndex = 0;
@@ -262,7 +262,7 @@ namespace MCUAssistant
             }
 
             //预置波特率
-            switch (Profile.G_DATABITS)
+            switch (Profile.GDatabits)
             {
                 case "5":
                     cbDataBits.SelectedIndex = 0;
@@ -284,7 +284,7 @@ namespace MCUAssistant
 
             }
             //预置停止位
-            switch (Profile.G_STOP)
+            switch (Profile.GStop)
             {
                 case "1":
                     cbStop.SelectedIndex = 0;
@@ -303,7 +303,7 @@ namespace MCUAssistant
             }
 
             //预置校验位
-            switch (Profile.G_PARITY)
+            switch (Profile.GParity)
             {
                 case "NONE":
                     cbParity.SelectedIndex = 0;
@@ -372,7 +372,7 @@ namespace MCUAssistant
                 txtReceive.SelectionColor = Color.Blue;         //改变字体的颜色
 
                 var byteRead = new byte[_sp1.BytesToRead];    //BytesToRead:sp1接收的字符个数
-                if (rdSendStr.Checked)                          //'发送字符串'单选按钮
+                if (rbRcvStr.Checked)                          //'发送字符串'单选按钮
                 {
                     try
                     {
@@ -509,7 +509,7 @@ namespace MCUAssistant
             }
             else		//以字符串形式发送时 
             {
-                _sp1.WriteLine(txtSend.Text);    //写入数据
+                _sp1.Write(txtSend.Text);    //写入数据
             }
         }
 
@@ -659,18 +659,18 @@ namespace MCUAssistant
             var iBaudRate = Convert.ToInt32(strBaudRate);
             var iDateBits = Convert.ToInt32(strDateBits);
 
-            Profile.G_BAUDRATE = iBaudRate + "";       //波特率
-            Profile.G_DATABITS = iDateBits + "";       //数据位
+            Profile.GBudrate = iBaudRate + "";       //波特率
+            Profile.GDatabits = iDateBits + "";       //数据位
             switch (cbStop.Text)            //停止位
             {
                 case "1":
-                    Profile.G_STOP = "1";
+                    Profile.GStop = "1";
                     break;
                 case "1.5":
-                    Profile.G_STOP = "1.5";
+                    Profile.GStop = "1.5";
                     break;
                 case "2":
-                    Profile.G_STOP = "2";
+                    Profile.GStop = "2";
                     break;
                 default:
                     MessageBox.Show("Error：参数不正确!", "Error");
@@ -679,13 +679,13 @@ namespace MCUAssistant
             switch (cbParity.Text)             //校验位
             {
                 case "无":
-                    Profile.G_PARITY = "NONE";
+                    Profile.GParity = "NONE";
                     break;
                 case "奇校验":
-                    Profile.G_PARITY = "ODD";
+                    Profile.GParity = "ODD";
                     break;
                 case "偶校验":
-                    Profile.G_PARITY = "EVEN";
+                    Profile.GParity = "EVEN";
                     break;
                 default:
                     MessageBox.Show("Error：参数不正确!", "Error");
