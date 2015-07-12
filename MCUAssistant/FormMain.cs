@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -18,7 +19,7 @@ namespace MCUAssistant
         int _perMacTime;
         int _a, _b, _c;
         Res _r1, _r2, _r3, _r4, _r5;
-        SerialPort sp1 = new SerialPort();
+        readonly SerialPort _sp1 = new SerialPort();
         //sp1.ReceivedBytesThreshold = 1;//只要有1个字符送达端口时便触发DataReceived事件
 
         struct Res
@@ -107,12 +108,15 @@ namespace MCUAssistant
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listBox1.SelectedIndex == 0)
-                webBrowser1.Url = new Uri(Application.StartupPath + @"\c51keyhelp.html");
-            else if (listBox1.SelectedIndex == 1)
-                webBrowser1.Url = new Uri(Application.StartupPath + @"\cjyhelp.mht");
-            
-
+            switch (listBox1.SelectedIndex)
+            {
+                case 0:
+                    webBrowser1.Url = new Uri(Application.StartupPath + @"\c51keyhelp.html");
+                    break;
+                case 1:
+                    webBrowser1.Url = new Uri(Application.StartupPath + @"\cjyhelp.mht");
+                    break;
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -121,8 +125,8 @@ namespace MCUAssistant
             InitCheck();
             CheckRUnit();
             CheckREnabel();
-            
-            textBoxR.Text = CalcRes().ToString();
+
+            textBoxR.Text = CalcRes().ToString(CultureInfo.InvariantCulture);
             
 
         }
@@ -154,12 +158,12 @@ namespace MCUAssistant
 
         private double CalcRes()
         {
-            calcUnitedRes(ref _r1);
-            calcUnitedRes(ref _r2);
-            calcUnitedRes(ref _r3);
-            calcUnitedRes(ref _r4);
-            calcUnitedRes(ref _r5);
-            double r;
+            CalcUnitedRes(ref _r1);
+            CalcUnitedRes(ref _r2);
+            CalcUnitedRes(ref _r3);
+            CalcUnitedRes(ref _r4);
+            CalcUnitedRes(ref _r5);
+            double r = 0;
             r = 1.0 / (_r1.Value + _r2.Value + _r3.Value + _r4.Value + _r5.Value);
             return r;
         }
@@ -196,7 +200,7 @@ namespace MCUAssistant
             _r5.Unit = comboBoxOmegaType5.SelectedIndex;
         }
 
-        private void calcUnitedRes(ref Res inRes)
+        private static void CalcUnitedRes(ref Res inRes)
         {
             switch (inRes.Unit)
             {
@@ -318,15 +322,15 @@ namespace MCUAssistant
             }
 
             //检查是否含有串口
-            string[] str = SerialPort.GetPortNames();
-            if (str == null)
+            var str = SerialPort.GetPortNames();
+            if (str.Length == 0)
             {
                 MessageBox.Show("本机没有串口！", "Error");
                 return;
             }
 
             //添加串口项目
-            foreach (string s in System.IO.Ports.SerialPort.GetPortNames())
+            foreach (var s in System.IO.Ports.SerialPort.GetPortNames())
             {//获取有多少个COM口
                 //System.Diagnostics.Debug.WriteLine(s);
                 cbSerial.Items.Add(s);
@@ -339,27 +343,27 @@ namespace MCUAssistant
             // cbDataBits.SelectedIndex = 3;
             // cbStop.SelectedIndex = 0;
             //  cbParity.SelectedIndex = 0;
-            sp1.BaudRate = 9600;
+            _sp1.BaudRate = 9600;
 
             Control.CheckForIllegalCrossThreadCalls = false;    //这个类中我们不检查跨线程的调用是否合法(因为.net 2.0以后加强了安全机制,，不允许在winform中直接跨线程访问控件的属性)
-            sp1.DataReceived += new SerialDataReceivedEventHandler(sp1_DataReceived);
+            _sp1.DataReceived += new SerialDataReceivedEventHandler(sp1_DataReceived);
             //sp1.ReceivedBytesThreshold = 1;
 
             radio1.Checked = true;  //单选按钮默认是选中的
             rbRcvStr.Checked = true;
 
             //准备就绪              
-            sp1.DtrEnable = true;
-            sp1.RtsEnable = true;
+            _sp1.DtrEnable = true;
+            _sp1.RtsEnable = true;
             //设置数据读取超时为1秒
-            sp1.ReadTimeout = 1000;
+            _sp1.ReadTimeout = 1000;
 
-            sp1.Close();
+            _sp1.Close();
         }
 
         void sp1_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            if (sp1.IsOpen)     //此处可能没有必要判断是否打开串口，但为了严谨性，我还是加上了
+            if (_sp1.IsOpen)     //此处可能没有必要判断是否打开串口，但为了严谨性，我还是加上了
             {
                 //输出当前时间
                 DateTime dt = DateTime.Now;
@@ -367,28 +371,28 @@ namespace MCUAssistant
                 txtReceive.SelectAll();
                 txtReceive.SelectionColor = Color.Blue;         //改变字体的颜色
 
-                byte[] byteRead = new byte[sp1.BytesToRead];    //BytesToRead:sp1接收的字符个数
+                var byteRead = new byte[_sp1.BytesToRead];    //BytesToRead:sp1接收的字符个数
                 if (rdSendStr.Checked)                          //'发送字符串'单选按钮
                 {
                     try
                     {
-                        txtReceive.Text += sp1.ReadLine() + "\r\n"; //注意：回车换行必须这样写，单独使用"\r"和"\n"都不会有效果
+                        txtReceive.Text += _sp1.ReadLine() + "\r\n"; //注意：回车换行必须这样写，单独使用"\r"和"\n"都不会有效果
                     }
                     catch (System.TimeoutException)
                     {
                         txtReceive.Text += "[发生异常：接收超时]\r\n";
                     }
 
-                    sp1.DiscardInBuffer();                      //清空SerialPort控件的Buffer 
+                    _sp1.DiscardInBuffer();                      //清空SerialPort控件的Buffer 
                 }
                 else                                            //'发送16进制按钮'
                 {
                     try
                     {
-                        Byte[] receivedData = new Byte[sp1.BytesToRead];        //创建接收字节数组
-                        sp1.Read(receivedData, 0, receivedData.Length);         //读取数据
+                        Byte[] receivedData = new Byte[_sp1.BytesToRead];        //创建接收字节数组
+                        _sp1.Read(receivedData, 0, receivedData.Length);         //读取数据
                         //string text = sp1.Read();   //Encoding.ASCII.GetString(receivedData);
-                        sp1.DiscardInBuffer();                                  //清空SerialPort控件的Buffer
+                        _sp1.DiscardInBuffer();                                  //清空SerialPort控件的Buffer
                         //这是用以显示字符串
                         //    string strRcv = null;
                         //    for (int i = 0; i < receivedData.Length; i++ )
@@ -399,11 +403,16 @@ namespace MCUAssistant
                         //}
                         string strRcv = null;
                         //int decNum = 0;//存储十进制
-                        for (int i = 0; i < receivedData.Length; i++) //窗体显示
+                        var finishData = receivedData.Where(h =>
+                        {
+                            strRcv += h.ToString("X2");
+                            return true;
+                        });
+                        /*for (int i = 0; i < receivedData.Length; i++) //窗体显示
                         {
 
                             strRcv += receivedData[i].ToString("X2");  //16进制显示
-                        }
+                        }*/
                         txtReceive.Text += strRcv + "\r\n";
                     }
                     catch (System.Exception ex)
@@ -430,7 +439,7 @@ namespace MCUAssistant
                 tmSend.Enabled = false;
             }
 
-            if (!sp1.IsOpen) //如果没打开
+            if (!_sp1.IsOpen) //如果没打开
             {
                 MessageBox.Show("请先打开串口！", "Error");
                 return;
@@ -488,24 +497,24 @@ namespace MCUAssistant
 
                     ii++;
                 }
-                sp1.Write(byteBuffer, 0, byteBuffer.Length);
+                _sp1.Write(byteBuffer, 0, byteBuffer.Length);
             }
             else		//以字符串形式发送时 
             {
-                sp1.WriteLine(txtSend.Text);    //写入数据
+                _sp1.WriteLine(txtSend.Text);    //写入数据
             }
         }
 
         private void btnSwitch_Click(object sender, EventArgs e)
         {
             //serialPort1.IsOpen
-            if (!sp1.IsOpen)
+            if (!_sp1.IsOpen)
             {
                 try
                 {
                     //设置串口号
                     string serialName = cbSerial.SelectedItem.ToString();
-                    sp1.PortName = serialName;
+                    _sp1.PortName = serialName;
 
                     //设置各“串口设置”
                     string strBaudRate = cbBaudRate.Text;
@@ -514,18 +523,18 @@ namespace MCUAssistant
                     Int32 iBaudRate = Convert.ToInt32(strBaudRate);
                     Int32 iDateBits = Convert.ToInt32(strDateBits);
 
-                    sp1.BaudRate = iBaudRate;       //波特率
-                    sp1.DataBits = iDateBits;       //数据位
+                    _sp1.BaudRate = iBaudRate;       //波特率
+                    _sp1.DataBits = iDateBits;       //数据位
                     switch (cbStop.Text)            //停止位
                     {
                         case "1":
-                            sp1.StopBits = StopBits.One;
+                            _sp1.StopBits = StopBits.One;
                             break;
                         case "1.5":
-                            sp1.StopBits = StopBits.OnePointFive;
+                            _sp1.StopBits = StopBits.OnePointFive;
                             break;
                         case "2":
-                            sp1.StopBits = StopBits.Two;
+                            _sp1.StopBits = StopBits.Two;
                             break;
                         default:
                             MessageBox.Show("Error：参数不正确!", "Error");
@@ -534,29 +543,29 @@ namespace MCUAssistant
                     switch (cbParity.Text)             //校验位
                     {
                         case "无":
-                            sp1.Parity = Parity.None;
+                            _sp1.Parity = Parity.None;
                             break;
                         case "奇校验":
-                            sp1.Parity = Parity.Odd;
+                            _sp1.Parity = Parity.Odd;
                             break;
                         case "偶校验":
-                            sp1.Parity = Parity.Even;
+                            _sp1.Parity = Parity.Even;
                             break;
                         default:
                             MessageBox.Show("Error：参数不正确!", "Error");
                             break;
                     }
 
-                    if (sp1.IsOpen == true)//如果打开状态，则先关闭一下
+                    if (_sp1.IsOpen == true)//如果打开状态，则先关闭一下
                     {
-                        sp1.Close();
+                        _sp1.Close();
                     }
                     //状态栏设置
-                    tsSpNum.Text = "串口号：" + sp1.PortName + "|";
-                    tsBaudRate.Text = "波特率：" + sp1.BaudRate + "|";
-                    tsDataBits.Text = "数据位：" + sp1.DataBits + "|";
-                    tsStopBits.Text = "停止位：" + sp1.StopBits + "|";
-                    tsParity.Text = "校验位：" + sp1.Parity + "|";
+                    tsSpNum.Text = "串口号：" + _sp1.PortName + "|";
+                    tsBaudRate.Text = "波特率：" + _sp1.BaudRate + "|";
+                    tsDataBits.Text = "数据位：" + _sp1.DataBits + "|";
+                    tsStopBits.Text = "停止位：" + _sp1.StopBits + "|";
+                    tsParity.Text = "校验位：" + _sp1.Parity + "|";
 
                     //设置必要控件不可用
                     cbSerial.Enabled = false;
@@ -565,7 +574,7 @@ namespace MCUAssistant
                     cbStop.Enabled = false;
                     cbParity.Enabled = false;
 
-                    sp1.Open();     //打开串口
+                    _sp1.Open();     //打开串口
                     btnSwitch.Text = "关闭串口";
                 }
                 catch (System.Exception ex)
@@ -591,7 +600,7 @@ namespace MCUAssistant
                 cbStop.Enabled = true;
                 cbParity.Enabled = true;
 
-                sp1.Close();                    //关闭串口
+                _sp1.Close();                    //关闭串口
                 btnSwitch.Text = "打开串口";
                 tmSend.Enabled = false;         //关闭计时器
             }
@@ -605,7 +614,7 @@ namespace MCUAssistant
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
         {
             INIFILE.Profile.SaveProfile();
-            sp1.Close();
+            _sp1.Close();
         }
 
         private void txtSend_KeyPress(object sender, KeyPressEventArgs e)
