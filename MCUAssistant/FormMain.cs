@@ -430,14 +430,7 @@ namespace MCUAssistant
 
         private void btnSend_Click(object sender, EventArgs e)
         {
-            if (cbTimeSend.Checked)
-            {
-                tmSend.Enabled = true;
-            }
-            else
-            {
-                tmSend.Enabled = false;
-            }
+            tmSend.Enabled = cbTimeSend.Checked ? true : false;
 
             if (!_sp1.IsOpen) //如果没打开
             {
@@ -445,35 +438,45 @@ namespace MCUAssistant
                 return;
             }
 
-            String strSend = txtSend.Text;
+            var strSend = txtSend.Text;
             if (radio1.Checked == true)	//“HEX发送” 按钮 
             {
                 //处理数字转换
-                string sendBuf = strSend;
-                string sendnoNull = sendBuf.Trim();
-                string sendNoComma = sendnoNull.Replace(',', ' ');    //去掉英文逗号
-                string sendNoComma1 = sendNoComma.Replace('，', ' '); //去掉中文逗号
-                string strSendNoComma2 = sendNoComma1.Replace("0x", "");   //去掉0x
-                strSendNoComma2.Replace("0X", "");   //去掉0X
-                string[] strArray = strSendNoComma2.Split(' ');
+                var sendBuf = strSend;
+                var sendnoNull = sendBuf.Trim();
+                var sendNoComma = sendnoNull.Replace(',', ' ');    //去掉英文逗号
+                var sendNoComma1 = sendNoComma.Replace('，', ' '); //去掉中文逗号
+                var strSendNoComma2 = sendNoComma1.Replace("0x", "");   //去掉0x
+                var strSendNo0X = strSendNoComma2.Replace("0X", "");   //去掉0X
+                var strArray = strSendNo0X.Split(' ');
 
-                int byteBufferLength = strArray.Length;
-                for (int i = 0; i < strArray.Length; i++)
+                var byteBufferLength = strArray.Length;
+                var blankStr = strArray.Where(data =>
+                {
+                    var result = data == "";
+                    return result;
+
+                });
+                foreach (var i in blankStr)
+                {
+                    byteBufferLength--;
+                }
+                /*for (int i = 0; i < strArray.Length; i++)
                 {
                     if (strArray[i] == "")
                     {
-                        byteBufferLength--;
+                        
                     }
-                }
+                }*/
                 // int temp = 0;
-                byte[] byteBuffer = new byte[byteBufferLength];
-                int ii = 0;
-                for (int i = 0; i < strArray.Length; i++)        //对获取的字符做相加运算
+                var byteBuffer = new byte[byteBufferLength];
+                var ii = 0;
+                for (var i = 0; i < strArray.Length; i++)        //对获取的字符做相加运算
                 {
 
                     Byte[] bytesOfStr = Encoding.Default.GetBytes(strArray[i]);
 
-                    int decNum = 0;
+                    var decNum = 0;
                     if (strArray[i] == "")
                     {
                         //ii--;     //加上此句是错误的，下面的continue以延缓了一个ii，不与i同步
@@ -513,15 +516,15 @@ namespace MCUAssistant
                 try
                 {
                     //设置串口号
-                    string serialName = cbSerial.SelectedItem.ToString();
+                    var serialName = cbSerial.SelectedItem.ToString();
                     _sp1.PortName = serialName;
 
                     //设置各“串口设置”
-                    string strBaudRate = cbBaudRate.Text;
-                    string strDateBits = cbDataBits.Text;
-                    string strStopBits = cbStop.Text;
-                    Int32 iBaudRate = Convert.ToInt32(strBaudRate);
-                    Int32 iDateBits = Convert.ToInt32(strDateBits);
+                    var strBaudRate = cbBaudRate.Text;
+                    var strDateBits = cbDataBits.Text;
+                    var strStopBits = cbStop.Text;
+                    var iBaudRate = Convert.ToInt32(strBaudRate);
+                    var iDateBits = Convert.ToInt32(strDateBits);
 
                     _sp1.BaudRate = iBaudRate;       //波特率
                     _sp1.DataBits = iDateBits;       //数据位
@@ -622,18 +625,19 @@ namespace MCUAssistant
             if (radio1.Checked == true)
             {
                 //正则匹配
-                string patten = "[0-9a-fA-F]|\b|0x|0X| "; //“\b”：退格键
-                Regex r = new Regex(patten);
-                Match m = r.Match(e.KeyChar.ToString());
+                const string patten = "[0-9a-fA-F]|\b|0x|0X| "; //“\b”：退格键
+                var r = new Regex(patten);
+                var m = r.Match(e.KeyChar.ToString());
 
-                if (m.Success)//&&(txtSend.Text.LastIndexOf(" ") != txtSend.Text.Length-1))
+                e.Handled = !m.Success;
+                /*if (m.Success)//&&(txtSend.Text.LastIndexOf(" ") != txtSend.Text.Length-1))
                 {
                     e.Handled = false;
                 }
                 else
                 {
                     e.Handled = true;
-                }
+                }*/
             }//end of radio1
             else
             {
