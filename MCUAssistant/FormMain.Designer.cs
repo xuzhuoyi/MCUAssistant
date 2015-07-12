@@ -208,7 +208,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(161, 39);
             this.button1.TabIndex = 1;
-            this.button1.Text = "计算";
+            this.button1.Text = "生成代码";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 

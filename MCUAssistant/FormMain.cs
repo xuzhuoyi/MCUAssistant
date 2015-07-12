@@ -366,7 +366,7 @@ namespace MCUAssistant
             if (_sp1.IsOpen)     //此处可能没有必要判断是否打开串口，但为了严谨性，我还是加上了
             {
                 //输出当前时间
-                DateTime dt = DateTime.Now;
+                var dt = DateTime.Now;
                 txtReceive.Text += dt.GetDateTimeFormats('f')[0].ToString() + "\r\n";
                 txtReceive.SelectAll();
                 txtReceive.SelectionColor = Color.Blue;         //改变字体的颜色
@@ -403,16 +403,12 @@ namespace MCUAssistant
                         //}
                         string strRcv = null;
                         //int decNum = 0;//存储十进制
-                        var finishData = receivedData.Where(h =>
-                        {
-                            strRcv += h.ToString("X2");
-                            return true;
-                        });
-                        /*for (int i = 0; i < receivedData.Length; i++) //窗体显示
+                       
+                        for (var i = 0; i < receivedData.Length; i++) //窗体显示
                         {
 
                             strRcv += receivedData[i].ToString("X2");  //16进制显示
-                        }*/
+                        }
                         txtReceive.Text += strRcv + "\r\n";
                     }
                     catch (System.Exception ex)
@@ -465,7 +461,7 @@ namespace MCUAssistant
                 {
                     if (strArray[i] == "")
                     {
-                        
+                        byteBufferLength--;
                     }
                 }*/
                 // int temp = 0;
@@ -484,7 +480,16 @@ namespace MCUAssistant
                     }
                     else
                     {
-                        decNum = Convert.ToInt32(strArray[i], 16); //atrArray[i] == 12时，temp == 18 
+                        try
+                        {
+                            decNum = Convert.ToInt32(strArray[i], 16); //atrArray[i] == 12时，temp == 18
+                        }
+                        catch (System.FormatException ex)
+                        {
+                            MessageBox.Show(ex.Message, "出错提示");
+                            return;
+                        }
+                         
                     }
 
                     try    //防止输错，使其只能输入一个字节的字符
@@ -648,11 +653,11 @@ namespace MCUAssistant
         private void btnSave_Click(object sender, EventArgs e)
         {
             //设置各“串口设置”
-            string strBaudRate = cbBaudRate.Text;
-            string strDateBits = cbDataBits.Text;
-            string strStopBits = cbStop.Text;
-            Int32 iBaudRate = Convert.ToInt32(strBaudRate);
-            Int32 iDateBits = Convert.ToInt32(strDateBits);
+            var strBaudRate = cbBaudRate.Text;
+            var strDateBits = cbDataBits.Text;
+            var strStopBits = cbStop.Text;
+            var iBaudRate = Convert.ToInt32(strBaudRate);
+            var iDateBits = Convert.ToInt32(strDateBits);
 
             Profile.G_BAUDRATE = iBaudRate + "";       //波特率
             Profile.G_DATABITS = iDateBits + "";       //数据位
@@ -698,10 +703,10 @@ namespace MCUAssistant
         private void tmSend_Tick(object sender, EventArgs e)
         {
             //转换时间间隔
-            string strSecond = txtSecond.Text;
+            var strSecond = txtSecond.Text;
             try
             {
-                int isecond = int.Parse(strSecond) * 1000;//Interval以微秒为单位
+                var isecond = int.Parse(strSecond) * 1000;//Interval以微秒为单位
                 tmSend.Interval = isecond;
                 if (tmSend.Enabled == true)
                 {
@@ -717,18 +722,12 @@ namespace MCUAssistant
 
         private void txtSecond_KeyPress(object sender, KeyPressEventArgs e)
         {
-            string patten = "[0-9]|\b"; //“\b”：退格键
-            Regex r = new Regex(patten);
-            Match m = r.Match(e.KeyChar.ToString());
+            const string patten = "[0-9]|\b"; //“\b”：退格键
+            var r = new Regex(patten);
+            var m = r.Match(e.KeyChar.ToString());
 
-            if (m.Success)
-            {
-                e.Handled = false;   //没操作“过”，系统会处理事件    
-            }
-            else
-            {
-                e.Handled = true;
-            }
+            e.Handled = !m.Success;  //没操作“过”，系统会处理事件
+            
         }
     }
 }
