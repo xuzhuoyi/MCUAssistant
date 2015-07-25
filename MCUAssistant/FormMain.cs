@@ -40,8 +40,9 @@ namespace MCUAssistant
             SetCal();
             InitOmegaOption();
             InitSerialSetup();
+            comboBoxTimer.SelectedIndex = 0;
 
-            
+
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -728,6 +729,25 @@ namespace MCUAssistant
 
             e.Handled = !m.Success;  //没操作“过”，系统会处理事件
             
+        }
+
+        private void radioButtonS0_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CalcTmod()
+        {
+            byte TMOD = 0;
+            if (comboBoxTimer.SelectedIndex == 0)
+            {
+                
+            }
+        }
+
+        private void buttonGen_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
