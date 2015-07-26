@@ -41,6 +41,7 @@ namespace MCUAssistant
             InitOmegaOption();
             InitSerialSetup();
             comboBoxTimer.SelectedIndex = 0;
+            textBoxTime.Text = "100";
 
 
         }
@@ -92,7 +93,9 @@ namespace MCUAssistant
         {
             Calc(int.Parse(textBoxus.Text));
             labelABC.Text = _a +"a"+ _b+"b" + _c+"c";
-            textBoxRes.Text = "void delay(void)\r\n{\r\n    unsigned char a,b,c;\r\n    for(c=" + _c + ";c>0;c--)\r\n        for(b=" + _b + ";b>0;b--)\r\n            for(a=" + _a + ";a>0;a--);\r\n}\r\n";
+            textBoxRes.Text = "void delay(void)\r\n{\r\n    unsigned char a,b,c;\r\n    for(c=" + _c +
+                              ";c>0;c--)\r\n        for(b=" + _b + ";b>0;b--)\r\n            for(a=" + _a +
+                              ";a>0;a--);\r\n}\r\n";
 
         }
 
@@ -776,7 +779,15 @@ namespace MCUAssistant
 
         private void buttonGen_Click(object sender, EventArgs e)
         {
+            var timer = comboBoxTimer.SelectedIndex;
 
+            textBoxCode.Text =
+                "#include <reg51.h>\r\n\r\nvoid InitTimer" + timer + "(void)\r\n{\r\n    TMOD = 0x" +
+                int.Parse(textBoxTmod.Text).ToString("X2") + ";\r\n    TH0 = 0x" + textBoxTH.Text + ";\r\n    TL0 = 0x" +
+                textBoxTL.Text +
+                ";\r\n    EA = 1;\r\n    ET0 = 1;\r\n    TR0 = 1;\r\n}\r\n\r\nvoid main(void)\r\n{\r\n    InitTimer" +
+                timer + "();\r\n}\r\n\r\nvoid Timer" + timer + "Interrupt(void) interrupt 1\r\n{\r\n    TH0 = 0x" +
+                textBoxTH.Text + ";\r\n    TL0 = 0x" + textBoxTL.Text + ";\r\n    //add your code here!\r\n}\r\n";
         }
 
         private void checkBoxGate_CheckedChanged(object sender, EventArgs e)
@@ -807,6 +818,23 @@ namespace MCUAssistant
         private void radioButtonS3_CheckedChanged(object sender, EventArgs e)
         {
             CalcTmod();
+        }
+
+        private void textBoxTime_TextChanged(object sender, EventArgs e)
+        {
+            var time = int.Parse(textBoxTime.Text);
+            if (time <= 65535)
+            {
+                textBoxTH.Text = (65536 - time).ToString("X4").Remove(2);
+                textBoxTL.Text = (65536 - time).ToString("X4").Remove(0, 2);
+                textBox2.Text = "0";
+            }
+            else
+            {
+                textBoxTH.Text = "";
+                textBoxTL.Text = "";
+                textBox2.Text = "不支持";
+            }
         }
     }
 }

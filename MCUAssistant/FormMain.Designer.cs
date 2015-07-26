@@ -147,6 +147,7 @@
             this.label20 = new System.Windows.Forms.Label();
             this.tmSend = new System.Windows.Forms.Timer(this.components);
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -162,6 +163,7 @@
             this.groupBox7.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -249,22 +251,10 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.groupBox6);
             this.tabPage2.Controls.Add(this.buttonGen);
             this.tabPage2.Controls.Add(this.checkBoxTimerInter);
             this.tabPage2.Controls.Add(this.groupBox5);
-            this.tabPage2.Controls.Add(this.textBoxTmod);
-            this.tabPage2.Controls.Add(this.textBoxTL);
-            this.tabPage2.Controls.Add(this.textBoxTH);
-            this.tabPage2.Controls.Add(this.label36);
-            this.tabPage2.Controls.Add(this.label37);
-            this.tabPage2.Controls.Add(this.label34);
-            this.tabPage2.Controls.Add(this.label35);
-            this.tabPage2.Controls.Add(this.label32);
-            this.tabPage2.Controls.Add(this.label33);
-            this.tabPage2.Controls.Add(this.textBox2);
-            this.tabPage2.Controls.Add(this.label31);
-            this.tabPage2.Controls.Add(this.textBoxTime);
-            this.tabPage2.Controls.Add(this.label30);
             this.tabPage2.Controls.Add(this.groupBox4);
             this.tabPage2.Location = new System.Drawing.Point(4, 34);
             this.tabPage2.Name = "tabPage2";
@@ -276,7 +266,7 @@
             // 
             // buttonGen
             // 
-            this.buttonGen.Location = new System.Drawing.Point(258, 447);
+            this.buttonGen.Location = new System.Drawing.Point(308, 494);
             this.buttonGen.Name = "buttonGen";
             this.buttonGen.Size = new System.Drawing.Size(153, 47);
             this.buttonGen.TabIndex = 16;
@@ -287,7 +277,7 @@
             // checkBoxTimerInter
             // 
             this.checkBoxTimerInter.AutoSize = true;
-            this.checkBoxTimerInter.Location = new System.Drawing.Point(61, 345);
+            this.checkBoxTimerInter.Location = new System.Drawing.Point(61, 504);
             this.checkBoxTimerInter.Name = "checkBoxTimerInter";
             this.checkBoxTimerInter.Size = new System.Drawing.Size(210, 28);
             this.checkBoxTimerInter.TabIndex = 15;
@@ -297,9 +287,9 @@
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.textBoxCode);
-            this.groupBox5.Location = new System.Drawing.Point(741, 34);
+            this.groupBox5.Location = new System.Drawing.Point(504, 27);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(395, 507);
+            this.groupBox5.Size = new System.Drawing.Size(632, 514);
             this.groupBox5.TabIndex = 14;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "代码";
@@ -309,26 +299,27 @@
             this.textBoxCode.Location = new System.Drawing.Point(18, 35);
             this.textBoxCode.Multiline = true;
             this.textBoxCode.Name = "textBoxCode";
-            this.textBoxCode.Size = new System.Drawing.Size(360, 453);
+            this.textBoxCode.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBoxCode.Size = new System.Drawing.Size(588, 453);
             this.textBoxCode.TabIndex = 0;
             // 
             // textBoxTmod
             // 
-            this.textBoxTmod.Location = new System.Drawing.Point(456, 249);
+            this.textBoxTmod.Location = new System.Drawing.Point(131, 235);
             this.textBoxTmod.Name = "textBoxTmod";
             this.textBoxTmod.Size = new System.Drawing.Size(100, 35);
             this.textBoxTmod.TabIndex = 13;
             // 
             // textBoxTL
             // 
-            this.textBoxTL.Location = new System.Drawing.Point(509, 208);
+            this.textBoxTL.Location = new System.Drawing.Point(237, 178);
             this.textBoxTL.Name = "textBoxTL";
             this.textBoxTL.Size = new System.Drawing.Size(100, 35);
             this.textBoxTL.TabIndex = 12;
             // 
             // textBoxTH
             // 
-            this.textBoxTH.Location = new System.Drawing.Point(403, 208);
+            this.textBoxTH.Location = new System.Drawing.Point(131, 178);
             this.textBoxTH.Name = "textBoxTH";
             this.textBoxTH.Size = new System.Drawing.Size(100, 35);
             this.textBoxTH.TabIndex = 11;
@@ -336,7 +327,7 @@
             // label36
             // 
             this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(522, 181);
+            this.label36.Location = new System.Drawing.Point(271, 151);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(34, 24);
             this.label36.TabIndex = 10;
@@ -345,7 +336,7 @@
             // label37
             // 
             this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(414, 181);
+            this.label37.Location = new System.Drawing.Point(164, 151);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(34, 24);
             this.label37.TabIndex = 9;
@@ -354,7 +345,7 @@
             // label34
             // 
             this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(340, 254);
+            this.label34.Location = new System.Drawing.Point(24, 235);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(58, 24);
             this.label34.TabIndex = 8;
@@ -363,7 +354,7 @@
             // label35
             // 
             this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(340, 193);
+            this.label35.Location = new System.Drawing.Point(24, 181);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(58, 24);
             this.label35.TabIndex = 7;
@@ -372,7 +363,7 @@
             // label32
             // 
             this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(268, 246);
+            this.label32.Location = new System.Drawing.Point(247, 105);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(58, 24);
             this.label32.TabIndex = 6;
@@ -381,7 +372,7 @@
             // label33
             // 
             this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(268, 193);
+            this.label33.Location = new System.Drawing.Point(244, 45);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(58, 24);
             this.label33.TabIndex = 5;
@@ -389,7 +380,7 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(145, 243);
+            this.textBox2.Location = new System.Drawing.Point(131, 102);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 35);
             this.textBox2.TabIndex = 4;
@@ -397,7 +388,7 @@
             // label31
             // 
             this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(33, 243);
+            this.label31.Location = new System.Drawing.Point(24, 105);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(58, 24);
             this.label31.TabIndex = 3;
@@ -405,15 +396,16 @@
             // 
             // textBoxTime
             // 
-            this.textBoxTime.Location = new System.Drawing.Point(145, 190);
+            this.textBoxTime.Location = new System.Drawing.Point(131, 39);
             this.textBoxTime.Name = "textBoxTime";
             this.textBoxTime.Size = new System.Drawing.Size(100, 35);
             this.textBoxTime.TabIndex = 2;
+            this.textBoxTime.TextChanged += new System.EventHandler(this.textBoxTime_TextChanged);
             // 
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(33, 190);
+            this.label30.Location = new System.Drawing.Point(24, 45);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(106, 24);
             this.label30.TabIndex = 1;
@@ -431,7 +423,7 @@
             this.groupBox4.Controls.Add(this.comboBoxTimer);
             this.groupBox4.Location = new System.Drawing.Point(33, 27);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(684, 142);
+            this.groupBox4.Size = new System.Drawing.Size(442, 163);
             this.groupBox4.TabIndex = 0;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "定时方式";
@@ -439,7 +431,7 @@
             // radioButtonS3
             // 
             this.radioButtonS3.AutoSize = true;
-            this.radioButtonS3.Location = new System.Drawing.Point(572, 79);
+            this.radioButtonS3.Location = new System.Drawing.Point(299, 125);
             this.radioButtonS3.Name = "radioButtonS3";
             this.radioButtonS3.Size = new System.Drawing.Size(101, 28);
             this.radioButtonS3.TabIndex = 7;
@@ -450,7 +442,7 @@
             // radioButtonS2
             // 
             this.radioButtonS2.AutoSize = true;
-            this.radioButtonS2.Location = new System.Drawing.Point(456, 78);
+            this.radioButtonS2.Location = new System.Drawing.Point(299, 91);
             this.radioButtonS2.Name = "radioButtonS2";
             this.radioButtonS2.Size = new System.Drawing.Size(101, 28);
             this.radioButtonS2.TabIndex = 6;
@@ -462,7 +454,7 @@
             // 
             this.radioButtonS1.AutoSize = true;
             this.radioButtonS1.Checked = true;
-            this.radioButtonS1.Location = new System.Drawing.Point(572, 35);
+            this.radioButtonS1.Location = new System.Drawing.Point(299, 57);
             this.radioButtonS1.Name = "radioButtonS1";
             this.radioButtonS1.Size = new System.Drawing.Size(101, 28);
             this.radioButtonS1.TabIndex = 5;
@@ -474,7 +466,7 @@
             // radioButtonS0
             // 
             this.radioButtonS0.AutoSize = true;
-            this.radioButtonS0.Location = new System.Drawing.Point(456, 35);
+            this.radioButtonS0.Location = new System.Drawing.Point(299, 23);
             this.radioButtonS0.Name = "radioButtonS0";
             this.radioButtonS0.Size = new System.Drawing.Size(101, 28);
             this.radioButtonS0.TabIndex = 4;
@@ -485,7 +477,7 @@
             // checkBoxCounter
             // 
             this.checkBoxCounter.AutoSize = true;
-            this.checkBoxCounter.Location = new System.Drawing.Point(275, 79);
+            this.checkBoxCounter.Location = new System.Drawing.Point(120, 98);
             this.checkBoxCounter.Name = "checkBoxCounter";
             this.checkBoxCounter.Size = new System.Drawing.Size(162, 28);
             this.checkBoxCounter.TabIndex = 3;
@@ -496,7 +488,7 @@
             // checkBoxGate
             // 
             this.checkBoxGate.AutoSize = true;
-            this.checkBoxGate.Location = new System.Drawing.Point(275, 35);
+            this.checkBoxGate.Location = new System.Drawing.Point(24, 98);
             this.checkBoxGate.Name = "checkBoxGate";
             this.checkBoxGate.Size = new System.Drawing.Size(90, 28);
             this.checkBoxGate.TabIndex = 2;
@@ -507,7 +499,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(24, 66);
+            this.label18.Location = new System.Drawing.Point(24, 45);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(82, 24);
             this.label18.TabIndex = 1;
@@ -520,9 +512,9 @@
             this.comboBoxTimer.Items.AddRange(new object[] {
             "T0",
             "T1"});
-            this.comboBoxTimer.Location = new System.Drawing.Point(112, 63);
+            this.comboBoxTimer.Location = new System.Drawing.Point(112, 45);
             this.comboBoxTimer.Name = "comboBoxTimer";
-            this.comboBoxTimer.Size = new System.Drawing.Size(121, 32);
+            this.comboBoxTimer.Size = new System.Drawing.Size(86, 32);
             this.comboBoxTimer.TabIndex = 0;
             this.comboBoxTimer.SelectedIndexChanged += new System.EventHandler(this.comboBoxTimer_SelectedIndexChanged);
             // 
@@ -1421,6 +1413,28 @@
             // 
             this.tmSend.Tick += new System.EventHandler(this.tmSend_Tick);
             // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.textBoxTime);
+            this.groupBox6.Controls.Add(this.label30);
+            this.groupBox6.Controls.Add(this.label31);
+            this.groupBox6.Controls.Add(this.textBox2);
+            this.groupBox6.Controls.Add(this.label33);
+            this.groupBox6.Controls.Add(this.label32);
+            this.groupBox6.Controls.Add(this.label35);
+            this.groupBox6.Controls.Add(this.textBoxTmod);
+            this.groupBox6.Controls.Add(this.label34);
+            this.groupBox6.Controls.Add(this.textBoxTL);
+            this.groupBox6.Controls.Add(this.label37);
+            this.groupBox6.Controls.Add(this.textBoxTH);
+            this.groupBox6.Controls.Add(this.label36);
+            this.groupBox6.Location = new System.Drawing.Point(33, 196);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(442, 283);
+            this.groupBox6.TabIndex = 17;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "groupBox6";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
@@ -1474,6 +1488,8 @@
             this.tabPage5.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1598,6 +1614,7 @@
         private System.Windows.Forms.CheckBox checkBoxGate;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.ComboBox comboBoxTimer;
+        private System.Windows.Forms.GroupBox groupBox6;
     }
 }
 
