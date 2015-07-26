@@ -39,6 +39,32 @@
             this.button1 = new System.Windows.Forms.Button();
             this.textBoxus = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.buttonGen = new System.Windows.Forms.Button();
+            this.checkBoxTimerInter = new System.Windows.Forms.CheckBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.textBoxCode = new System.Windows.Forms.TextBox();
+            this.textBoxTmod = new System.Windows.Forms.TextBox();
+            this.textBoxTL = new System.Windows.Forms.TextBox();
+            this.textBoxTH = new System.Windows.Forms.TextBox();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.textBoxTime = new System.Windows.Forms.TextBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.radioButtonS3 = new System.Windows.Forms.RadioButton();
+            this.radioButtonS2 = new System.Windows.Forms.RadioButton();
+            this.radioButtonS1 = new System.Windows.Forms.RadioButton();
+            this.radioButtonS0 = new System.Windows.Forms.RadioButton();
+            this.checkBoxCounter = new System.Windows.Forms.CheckBox();
+            this.checkBoxGate = new System.Windows.Forms.CheckBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.comboBoxTimer = new System.Windows.Forms.ComboBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.listBox1 = new System.Windows.Forms.ListBox();
@@ -121,35 +147,11 @@
             this.label20 = new System.Windows.Forms.Label();
             this.tmSend = new System.Windows.Forms.Timer(this.components);
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.comboBoxTimer = new System.Windows.Forms.ComboBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.checkBoxGate = new System.Windows.Forms.CheckBox();
-            this.checkBoxCounter = new System.Windows.Forms.CheckBox();
-            this.radioButtonS0 = new System.Windows.Forms.RadioButton();
-            this.radioButtonS1 = new System.Windows.Forms.RadioButton();
-            this.radioButtonS2 = new System.Windows.Forms.RadioButton();
-            this.radioButtonS3 = new System.Windows.Forms.RadioButton();
-            this.label30 = new System.Windows.Forms.Label();
-            this.textBoxTime = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label31 = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
-            this.label35 = new System.Windows.Forms.Label();
-            this.label36 = new System.Windows.Forms.Label();
-            this.label37 = new System.Windows.Forms.Label();
-            this.textBoxTL = new System.Windows.Forms.TextBox();
-            this.textBoxTH = new System.Windows.Forms.TextBox();
-            this.textBoxTmod = new System.Windows.Forms.TextBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.checkBoxTimerInter = new System.Windows.Forms.CheckBox();
-            this.buttonGen = new System.Windows.Forms.Button();
-            this.textBoxCode = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -160,8 +162,6 @@
             this.groupBox7.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.tabPage4.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -273,6 +273,258 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "定时器/计数器";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // buttonGen
+            // 
+            this.buttonGen.Location = new System.Drawing.Point(258, 447);
+            this.buttonGen.Name = "buttonGen";
+            this.buttonGen.Size = new System.Drawing.Size(153, 47);
+            this.buttonGen.TabIndex = 16;
+            this.buttonGen.Text = "生成";
+            this.buttonGen.UseVisualStyleBackColor = true;
+            this.buttonGen.Click += new System.EventHandler(this.buttonGen_Click);
+            // 
+            // checkBoxTimerInter
+            // 
+            this.checkBoxTimerInter.AutoSize = true;
+            this.checkBoxTimerInter.Location = new System.Drawing.Point(61, 345);
+            this.checkBoxTimerInter.Name = "checkBoxTimerInter";
+            this.checkBoxTimerInter.Size = new System.Drawing.Size(210, 28);
+            this.checkBoxTimerInter.TabIndex = 15;
+            this.checkBoxTimerInter.Text = "启用定时器中断";
+            this.checkBoxTimerInter.UseVisualStyleBackColor = true;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.textBoxCode);
+            this.groupBox5.Location = new System.Drawing.Point(741, 34);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(395, 507);
+            this.groupBox5.TabIndex = 14;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "代码";
+            // 
+            // textBoxCode
+            // 
+            this.textBoxCode.Location = new System.Drawing.Point(18, 35);
+            this.textBoxCode.Multiline = true;
+            this.textBoxCode.Name = "textBoxCode";
+            this.textBoxCode.Size = new System.Drawing.Size(360, 453);
+            this.textBoxCode.TabIndex = 0;
+            // 
+            // textBoxTmod
+            // 
+            this.textBoxTmod.Location = new System.Drawing.Point(456, 249);
+            this.textBoxTmod.Name = "textBoxTmod";
+            this.textBoxTmod.Size = new System.Drawing.Size(100, 35);
+            this.textBoxTmod.TabIndex = 13;
+            // 
+            // textBoxTL
+            // 
+            this.textBoxTL.Location = new System.Drawing.Point(509, 208);
+            this.textBoxTL.Name = "textBoxTL";
+            this.textBoxTL.Size = new System.Drawing.Size(100, 35);
+            this.textBoxTL.TabIndex = 12;
+            // 
+            // textBoxTH
+            // 
+            this.textBoxTH.Location = new System.Drawing.Point(403, 208);
+            this.textBoxTH.Name = "textBoxTH";
+            this.textBoxTH.Size = new System.Drawing.Size(100, 35);
+            this.textBoxTH.TabIndex = 11;
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(522, 181);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(34, 24);
+            this.label36.TabIndex = 10;
+            this.label36.Text = "TL";
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(414, 181);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(34, 24);
+            this.label37.TabIndex = 9;
+            this.label37.Text = "TH";
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(340, 254);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(58, 24);
+            this.label34.TabIndex = 8;
+            this.label34.Text = "TMOD";
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(340, 193);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(58, 24);
+            this.label35.TabIndex = 7;
+            this.label35.Text = "初值";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(268, 246);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(58, 24);
+            this.label32.TabIndex = 6;
+            this.label32.Text = "微秒";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(268, 193);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(58, 24);
+            this.label33.TabIndex = 5;
+            this.label33.Text = "毫秒";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(145, 243);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 35);
+            this.textBox2.TabIndex = 4;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(33, 243);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(58, 24);
+            this.label31.TabIndex = 3;
+            this.label31.Text = "误差";
+            // 
+            // textBoxTime
+            // 
+            this.textBoxTime.Location = new System.Drawing.Point(145, 190);
+            this.textBoxTime.Name = "textBoxTime";
+            this.textBoxTime.Size = new System.Drawing.Size(100, 35);
+            this.textBoxTime.TabIndex = 2;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(33, 190);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(106, 24);
+            this.label30.TabIndex = 1;
+            this.label30.Text = "定时时间";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.radioButtonS3);
+            this.groupBox4.Controls.Add(this.radioButtonS2);
+            this.groupBox4.Controls.Add(this.radioButtonS1);
+            this.groupBox4.Controls.Add(this.radioButtonS0);
+            this.groupBox4.Controls.Add(this.checkBoxCounter);
+            this.groupBox4.Controls.Add(this.checkBoxGate);
+            this.groupBox4.Controls.Add(this.label18);
+            this.groupBox4.Controls.Add(this.comboBoxTimer);
+            this.groupBox4.Location = new System.Drawing.Point(33, 27);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(684, 142);
+            this.groupBox4.TabIndex = 0;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "定时方式";
+            // 
+            // radioButtonS3
+            // 
+            this.radioButtonS3.AutoSize = true;
+            this.radioButtonS3.Location = new System.Drawing.Point(572, 79);
+            this.radioButtonS3.Name = "radioButtonS3";
+            this.radioButtonS3.Size = new System.Drawing.Size(101, 28);
+            this.radioButtonS3.TabIndex = 7;
+            this.radioButtonS3.Text = "方式3";
+            this.radioButtonS3.UseVisualStyleBackColor = true;
+            this.radioButtonS3.CheckedChanged += new System.EventHandler(this.radioButtonS3_CheckedChanged);
+            // 
+            // radioButtonS2
+            // 
+            this.radioButtonS2.AutoSize = true;
+            this.radioButtonS2.Location = new System.Drawing.Point(456, 78);
+            this.radioButtonS2.Name = "radioButtonS2";
+            this.radioButtonS2.Size = new System.Drawing.Size(101, 28);
+            this.radioButtonS2.TabIndex = 6;
+            this.radioButtonS2.Text = "方式2";
+            this.radioButtonS2.UseVisualStyleBackColor = true;
+            this.radioButtonS2.CheckedChanged += new System.EventHandler(this.radioButtonS2_CheckedChanged);
+            // 
+            // radioButtonS1
+            // 
+            this.radioButtonS1.AutoSize = true;
+            this.radioButtonS1.Checked = true;
+            this.radioButtonS1.Location = new System.Drawing.Point(572, 35);
+            this.radioButtonS1.Name = "radioButtonS1";
+            this.radioButtonS1.Size = new System.Drawing.Size(101, 28);
+            this.radioButtonS1.TabIndex = 5;
+            this.radioButtonS1.TabStop = true;
+            this.radioButtonS1.Text = "方式1";
+            this.radioButtonS1.UseVisualStyleBackColor = true;
+            this.radioButtonS1.CheckedChanged += new System.EventHandler(this.radioButtonS1_CheckedChanged);
+            // 
+            // radioButtonS0
+            // 
+            this.radioButtonS0.AutoSize = true;
+            this.radioButtonS0.Location = new System.Drawing.Point(456, 35);
+            this.radioButtonS0.Name = "radioButtonS0";
+            this.radioButtonS0.Size = new System.Drawing.Size(101, 28);
+            this.radioButtonS0.TabIndex = 4;
+            this.radioButtonS0.Text = "方式0";
+            this.radioButtonS0.UseVisualStyleBackColor = true;
+            this.radioButtonS0.CheckedChanged += new System.EventHandler(this.radioButtonS0_CheckedChanged);
+            // 
+            // checkBoxCounter
+            // 
+            this.checkBoxCounter.AutoSize = true;
+            this.checkBoxCounter.Location = new System.Drawing.Point(275, 79);
+            this.checkBoxCounter.Name = "checkBoxCounter";
+            this.checkBoxCounter.Size = new System.Drawing.Size(162, 28);
+            this.checkBoxCounter.TabIndex = 3;
+            this.checkBoxCounter.Text = "作为计数器";
+            this.checkBoxCounter.UseVisualStyleBackColor = true;
+            this.checkBoxCounter.CheckedChanged += new System.EventHandler(this.checkBoxCounter_CheckedChanged);
+            // 
+            // checkBoxGate
+            // 
+            this.checkBoxGate.AutoSize = true;
+            this.checkBoxGate.Location = new System.Drawing.Point(275, 35);
+            this.checkBoxGate.Name = "checkBoxGate";
+            this.checkBoxGate.Size = new System.Drawing.Size(90, 28);
+            this.checkBoxGate.TabIndex = 2;
+            this.checkBoxGate.Text = "GATE";
+            this.checkBoxGate.UseVisualStyleBackColor = true;
+            this.checkBoxGate.CheckedChanged += new System.EventHandler(this.checkBoxGate_CheckedChanged);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(24, 66);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(82, 24);
+            this.label18.TabIndex = 1;
+            this.label18.Text = "定时器";
+            // 
+            // comboBoxTimer
+            // 
+            this.comboBoxTimer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxTimer.FormattingEnabled = true;
+            this.comboBoxTimer.Items.AddRange(new object[] {
+            "T0",
+            "T1"});
+            this.comboBoxTimer.Location = new System.Drawing.Point(112, 63);
+            this.comboBoxTimer.Name = "comboBoxTimer";
+            this.comboBoxTimer.Size = new System.Drawing.Size(121, 32);
+            this.comboBoxTimer.TabIndex = 0;
+            this.comboBoxTimer.SelectedIndexChanged += new System.EventHandler(this.comboBoxTimer_SelectedIndexChanged);
             // 
             // tabPage3
             // 
@@ -1169,252 +1421,6 @@
             // 
             this.tmSend.Tick += new System.EventHandler(this.tmSend_Tick);
             // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.radioButtonS3);
-            this.groupBox4.Controls.Add(this.radioButtonS2);
-            this.groupBox4.Controls.Add(this.radioButtonS1);
-            this.groupBox4.Controls.Add(this.radioButtonS0);
-            this.groupBox4.Controls.Add(this.checkBoxCounter);
-            this.groupBox4.Controls.Add(this.checkBoxGate);
-            this.groupBox4.Controls.Add(this.label18);
-            this.groupBox4.Controls.Add(this.comboBoxTimer);
-            this.groupBox4.Location = new System.Drawing.Point(33, 27);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(684, 142);
-            this.groupBox4.TabIndex = 0;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "定时方式";
-            // 
-            // comboBoxTimer
-            // 
-            this.comboBoxTimer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxTimer.FormattingEnabled = true;
-            this.comboBoxTimer.Items.AddRange(new object[] {
-            "T0",
-            "T1"});
-            this.comboBoxTimer.Location = new System.Drawing.Point(112, 63);
-            this.comboBoxTimer.Name = "comboBoxTimer";
-            this.comboBoxTimer.Size = new System.Drawing.Size(121, 32);
-            this.comboBoxTimer.TabIndex = 0;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(24, 66);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(82, 24);
-            this.label18.TabIndex = 1;
-            this.label18.Text = "定时器";
-            // 
-            // checkBoxGate
-            // 
-            this.checkBoxGate.AutoSize = true;
-            this.checkBoxGate.Location = new System.Drawing.Point(275, 35);
-            this.checkBoxGate.Name = "checkBoxGate";
-            this.checkBoxGate.Size = new System.Drawing.Size(90, 28);
-            this.checkBoxGate.TabIndex = 2;
-            this.checkBoxGate.Text = "GATE";
-            this.checkBoxGate.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxCounter
-            // 
-            this.checkBoxCounter.AutoSize = true;
-            this.checkBoxCounter.Location = new System.Drawing.Point(275, 79);
-            this.checkBoxCounter.Name = "checkBoxCounter";
-            this.checkBoxCounter.Size = new System.Drawing.Size(162, 28);
-            this.checkBoxCounter.TabIndex = 3;
-            this.checkBoxCounter.Text = "作为计数器";
-            this.checkBoxCounter.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonS0
-            // 
-            this.radioButtonS0.AutoSize = true;
-            this.radioButtonS0.Location = new System.Drawing.Point(456, 35);
-            this.radioButtonS0.Name = "radioButtonS0";
-            this.radioButtonS0.Size = new System.Drawing.Size(101, 28);
-            this.radioButtonS0.TabIndex = 4;
-            this.radioButtonS0.Text = "方式0";
-            this.radioButtonS0.UseVisualStyleBackColor = true;
-            this.radioButtonS0.CheckedChanged += new System.EventHandler(this.radioButtonS0_CheckedChanged);
-            // 
-            // radioButtonS1
-            // 
-            this.radioButtonS1.AutoSize = true;
-            this.radioButtonS1.Checked = true;
-            this.radioButtonS1.Location = new System.Drawing.Point(572, 35);
-            this.radioButtonS1.Name = "radioButtonS1";
-            this.radioButtonS1.Size = new System.Drawing.Size(101, 28);
-            this.radioButtonS1.TabIndex = 5;
-            this.radioButtonS1.TabStop = true;
-            this.radioButtonS1.Text = "方式1";
-            this.radioButtonS1.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonS2
-            // 
-            this.radioButtonS2.AutoSize = true;
-            this.radioButtonS2.Location = new System.Drawing.Point(456, 78);
-            this.radioButtonS2.Name = "radioButtonS2";
-            this.radioButtonS2.Size = new System.Drawing.Size(101, 28);
-            this.radioButtonS2.TabIndex = 6;
-            this.radioButtonS2.Text = "方式2";
-            this.radioButtonS2.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonS3
-            // 
-            this.radioButtonS3.AutoSize = true;
-            this.radioButtonS3.Location = new System.Drawing.Point(572, 79);
-            this.radioButtonS3.Name = "radioButtonS3";
-            this.radioButtonS3.Size = new System.Drawing.Size(101, 28);
-            this.radioButtonS3.TabIndex = 7;
-            this.radioButtonS3.Text = "方式3";
-            this.radioButtonS3.UseVisualStyleBackColor = true;
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(33, 190);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(106, 24);
-            this.label30.TabIndex = 1;
-            this.label30.Text = "定时时间";
-            // 
-            // textBoxTime
-            // 
-            this.textBoxTime.Location = new System.Drawing.Point(145, 190);
-            this.textBoxTime.Name = "textBoxTime";
-            this.textBoxTime.Size = new System.Drawing.Size(100, 35);
-            this.textBoxTime.TabIndex = 2;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(145, 243);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 35);
-            this.textBox2.TabIndex = 4;
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(33, 243);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(58, 24);
-            this.label31.TabIndex = 3;
-            this.label31.Text = "误差";
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(268, 246);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(58, 24);
-            this.label32.TabIndex = 6;
-            this.label32.Text = "微秒";
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(268, 193);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(58, 24);
-            this.label33.TabIndex = 5;
-            this.label33.Text = "毫秒";
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(340, 254);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(58, 24);
-            this.label34.TabIndex = 8;
-            this.label34.Text = "TMOD";
-            // 
-            // label35
-            // 
-            this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(340, 193);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(58, 24);
-            this.label35.TabIndex = 7;
-            this.label35.Text = "初值";
-            // 
-            // label36
-            // 
-            this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(522, 181);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(34, 24);
-            this.label36.TabIndex = 10;
-            this.label36.Text = "TL";
-            // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(414, 181);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(34, 24);
-            this.label37.TabIndex = 9;
-            this.label37.Text = "TH";
-            // 
-            // textBoxTL
-            // 
-            this.textBoxTL.Location = new System.Drawing.Point(509, 208);
-            this.textBoxTL.Name = "textBoxTL";
-            this.textBoxTL.Size = new System.Drawing.Size(100, 35);
-            this.textBoxTL.TabIndex = 12;
-            // 
-            // textBoxTH
-            // 
-            this.textBoxTH.Location = new System.Drawing.Point(403, 208);
-            this.textBoxTH.Name = "textBoxTH";
-            this.textBoxTH.Size = new System.Drawing.Size(100, 35);
-            this.textBoxTH.TabIndex = 11;
-            // 
-            // textBoxTmod
-            // 
-            this.textBoxTmod.Location = new System.Drawing.Point(456, 249);
-            this.textBoxTmod.Name = "textBoxTmod";
-            this.textBoxTmod.Size = new System.Drawing.Size(100, 35);
-            this.textBoxTmod.TabIndex = 13;
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.textBoxCode);
-            this.groupBox5.Location = new System.Drawing.Point(741, 34);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(395, 507);
-            this.groupBox5.TabIndex = 14;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "代码";
-            // 
-            // checkBoxTimerInter
-            // 
-            this.checkBoxTimerInter.AutoSize = true;
-            this.checkBoxTimerInter.Location = new System.Drawing.Point(61, 345);
-            this.checkBoxTimerInter.Name = "checkBoxTimerInter";
-            this.checkBoxTimerInter.Size = new System.Drawing.Size(210, 28);
-            this.checkBoxTimerInter.TabIndex = 15;
-            this.checkBoxTimerInter.Text = "启用定时器中断";
-            this.checkBoxTimerInter.UseVisualStyleBackColor = true;
-            // 
-            // buttonGen
-            // 
-            this.buttonGen.Location = new System.Drawing.Point(258, 447);
-            this.buttonGen.Name = "buttonGen";
-            this.buttonGen.Size = new System.Drawing.Size(153, 47);
-            this.buttonGen.TabIndex = 16;
-            this.buttonGen.Text = "生成";
-            this.buttonGen.UseVisualStyleBackColor = true;
-            this.buttonGen.Click += new System.EventHandler(this.buttonGen_Click);
-            // 
-            // textBoxCode
-            // 
-            this.textBoxCode.Location = new System.Drawing.Point(18, 35);
-            this.textBoxCode.Multiline = true;
-            this.textBoxCode.Name = "textBoxCode";
-            this.textBoxCode.Size = new System.Drawing.Size(360, 453);
-            this.textBoxCode.TabIndex = 0;
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
@@ -1446,6 +1452,10 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage6.ResumeLayout(false);
             this.tabPage6.PerformLayout();
@@ -1464,10 +1474,6 @@
             this.tabPage5.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

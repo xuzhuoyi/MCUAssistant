@@ -733,21 +733,80 @@ namespace MCUAssistant
 
         private void radioButtonS0_CheckedChanged(object sender, EventArgs e)
         {
-
+            CalcTmod();
         }
 
         private void CalcTmod()
         {
-            byte TMOD = 0;
+            byte tmod = 0;
+            if (checkBoxGate.Checked == true)
+            {
+                tmod |= 0x88;
+            }
+            if (checkBoxCounter.Checked == true)
+            {
+                tmod |= 0x44;
+            }
+            if (radioButtonS0.Checked == true)
+            {
+                tmod |= 0;
+            }
+            if (radioButtonS1.Checked == true)
+            {
+                tmod |= 0x11;
+            }
+            if (radioButtonS2.Checked == true)
+            {
+                tmod |= 0x22;
+            }
+            if (radioButtonS3.Checked == true)
+            {
+                tmod |= 0x51;
+            }
             if (comboBoxTimer.SelectedIndex == 0)
             {
-                
+                tmod &= 0x0F;
             }
+            else
+            {
+                tmod &= 0xF0;
+            }
+            textBoxTmod.Text = tmod.ToString();
         }
 
         private void buttonGen_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void checkBoxGate_CheckedChanged(object sender, EventArgs e)
+        {
+            CalcTmod();
+        }
+
+        private void checkBoxCounter_CheckedChanged(object sender, EventArgs e)
+        {
+            CalcTmod();
+        }
+
+        private void comboBoxTimer_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CalcTmod();
+        }
+
+        private void radioButtonS1_CheckedChanged(object sender, EventArgs e)
+        {
+            CalcTmod();
+        }
+
+        private void radioButtonS2_CheckedChanged(object sender, EventArgs e)
+        {
+            CalcTmod();
+        }
+
+        private void radioButtonS3_CheckedChanged(object sender, EventArgs e)
+        {
+            CalcTmod();
         }
     }
 }
