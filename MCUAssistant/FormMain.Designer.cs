@@ -1433,7 +1433,7 @@
             this.groupBox6.Size = new System.Drawing.Size(442, 283);
             this.groupBox6.TabIndex = 17;
             this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "groupBox6";
+            this.groupBox6.Text = "定时时间";
             // 
             // FormMain
             // 
