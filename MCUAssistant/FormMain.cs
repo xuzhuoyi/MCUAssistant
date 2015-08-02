@@ -20,6 +20,7 @@ namespace MCUAssistant
         int _a, _b, _c;
         Res _r1, _r2, _r3, _r4, _r5;
         readonly SerialPort _sp1 = new SerialPort();
+        private bool _noSerialPorts;
         //sp1.ReceivedBytesThreshold = 1;//只要有1个字符送达端口时便触发DataReceived事件
 
         struct Res
@@ -329,7 +330,7 @@ namespace MCUAssistant
             var str = SerialPort.GetPortNames();
             if (str.Length == 0)
             {
-                MessageBox.Show("本机没有串口！", "Error");
+                _noSerialPorts = true;
                 return;
             }
 
@@ -780,14 +781,23 @@ namespace MCUAssistant
         private void buttonGen_Click(object sender, EventArgs e)
         {
             var timer = comboBoxTimer.SelectedIndex;
+            var strTimerInt = checkBoxTimerInter.Checked ? ";\r\n    EA = 1;\r\n    ET0 = 1;" : ";";
 
             textBoxCode.Text =
                 "#include <reg51.h>\r\n\r\nvoid InitTimer" + timer + "(void)\r\n{\r\n    TMOD = 0x" +
                 int.Parse(textBoxTmod.Text).ToString("X2") + ";\r\n    TH0 = 0x" + textBoxTH.Text + ";\r\n    TL0 = 0x" +
-                textBoxTL.Text +
-                ";\r\n    EA = 1;\r\n    ET0 = 1;\r\n    TR0 = 1;\r\n}\r\n\r\nvoid main(void)\r\n{\r\n    InitTimer" +
+                textBoxTL.Text + strTimerInt + "\r\n    TR0 = 1;\r\n}\r\n\r\nvoid main(void)\r\n{\r\n    InitTimer" +
                 timer + "();\r\n}\r\n\r\nvoid Timer" + timer + "Interrupt(void) interrupt 1\r\n{\r\n    TH0 = 0x" +
                 textBoxTH.Text + ";\r\n    TL0 = 0x" + textBoxTL.Text + ";\r\n    //add your code here!\r\n}\r\n";
+        }
+
+        private void tabPage6_Enter(object sender, EventArgs e)
+        {
+            if (!_noSerialPorts)
+            {
+                return;
+            }
+            MessageBox.Show("本机没有串口！");
         }
 
         private void checkBoxGate_CheckedChanged(object sender, EventArgs e)
